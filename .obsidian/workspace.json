@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "language/REAMDE.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "REAMDE"
+              "title": "README"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "language/REAMDE.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for REAMDE"
+              "title": "Backlinks for README"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "language/REAMDE.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from REAMDE"
+              "title": "Outgoing links from README"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "language/REAMDE.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of REAMDE"
+              "title": "Outline of README"
             }
           }
         ]
@@ -170,6 +170,8 @@
   },
   "active": "07f81ddf5ec54ffe",
   "lastOpenFiles": [
+    "language/REAMDE.md",
+    "language/README.md",
     "language/code/src/enumeration/Color.class",
     "language/code/src/enumeration/Main.java",
     "language/code/src/enumeration/Main.class",
@@ -180,7 +182,6 @@
     "language/code/src/enum/Day.class",
     "language/code/src/enum",
     "language/code/src/enumeration/main.java",
-    "language/code/src/enumeration/MAIN;JAVA",
     "language/ressources/images/oop_pop.png",
     "language/ressources/oop_pop.png",
     "language/code/src/README.md",

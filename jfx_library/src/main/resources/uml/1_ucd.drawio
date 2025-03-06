@@ -1,0 +1,92 @@
+<mxfile host="65bd71144e">
+    <diagram id="Gl2VMOSmGS-XMI21XPmr" name="Page-1">
+        <mxGraphModel dx="62" dy="662" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="1">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="47" value="" style="swimlane;startSize=0;rounded=1;labelBorderColor=none;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="860" y="170" width="940" height="630" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" style="edgeStyle=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#10739e;fillColor=#b1ddf0;" parent="47" source="7" target="55" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="&lt;font color=&quot;#000000&quot;&gt;&amp;lt;&amp;lt;library manager&amp;gt;&amp;gt;&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fillColor=#e51400;strokeColor=#B20000;fontColor=#ffffff;" parent="47" vertex="1">
+                    <mxGeometry x="80" y="410" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="" style="endArrow=classic;html=1;fontColor=#000000;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;" parent="47" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="94.5" y="380" as="sourcePoint"/>
+                        <mxPoint x="94.5" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="54" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#000000;dashed=1;" parent="47" source="37" target="50" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="set borrower status" style="ellipse;whiteSpace=wrap;html=1;align=center;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};treeFolding=1;treeMoving=1;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;fontColor=#000000;" parent="47" vertex="1">
+                    <mxGeometry x="263.5" y="380" width="103.5" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=#000000;" parent="47" source="39" target="51" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="set book status" style="ellipse;whiteSpace=wrap;html=1;align=center;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};treeFolding=1;treeMoving=1;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;fontColor=#000000;" parent="47" vertex="1">
+                    <mxGeometry x="263.5" y="440" width="103.5" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#000000;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;" parent="47" source="7" target="37" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="620" y="420" as="sourcePoint"/>
+                        <mxPoint x="670" y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="46" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#000000;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;" parent="47" target="39" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="95" y="440" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="50" value="see borrower informations" style="ellipse;whiteSpace=wrap;html=1;align=center;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};treeFolding=1;treeMoving=1;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;fontColor=#000000;" parent="47" vertex="1">
+                    <mxGeometry x="469.63" y="380" width="103.5" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="see book informations" style="ellipse;whiteSpace=wrap;html=1;align=center;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};treeFolding=1;treeMoving=1;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;fontColor=#000000;" parent="47" vertex="1">
+                    <mxGeometry x="469.63" y="440" width="103.5" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="swimlane;startSize=0;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;fontColor=#000000;rounded=1;" parent="47" vertex="1">
+                    <mxGeometry x="229.5" y="50" width="690.5" height="540" as="geometry">
+                        <mxRectangle x="827" y="200" width="50" height="40" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="43" value="Library: UCD" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#10739e;fillColor=#b1ddf0;labelBorderColor=none;fontColor=#000000;" parent="5" vertex="1">
+                    <mxGeometry x="610.5" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="See available books" style="ellipse;whiteSpace=wrap;html=1;align=center;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};treeFolding=1;treeMoving=1;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;fontColor=#000000;" parent="5" vertex="1">
+                    <mxGeometry x="230.5" y="140" width="121.25" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="Give back a book" style="ellipse;whiteSpace=wrap;html=1;align=center;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};treeFolding=1;treeMoving=1;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;fontColor=#000000;" parent="5" vertex="1">
+                    <mxGeometry x="230.88" y="90" width="121.25" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Borrow a book" style="ellipse;whiteSpace=wrap;html=1;align=center;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};treeFolding=1;treeMoving=1;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;fontColor=#000000;" parent="5" vertex="1">
+                    <mxGeometry x="230.5" y="40" width="120.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="add new books" style="ellipse;whiteSpace=wrap;html=1;align=center;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};treeFolding=1;treeMoving=1;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;fontColor=#000000;" parent="5" vertex="1">
+                    <mxGeometry x="30.5" y="450" width="103.5" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;span style=&quot;color: rgba(0 , 0 , 0 , 0) ; font-family: monospace ; font-size: 0px&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22set%20book%20status%22%20style%3D%22ellipse%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3Balign%3Dcenter%3BnewEdgeStyle%3D%7B%26quot%3BedgeStyle%26quot%3B%3A%26quot%3BentityRelationEdgeStyle%26quot%3B%2C%26quot%3BstartArrow%26quot%3B%3A%26quot%3Bnone%26quot%3B%2C%26quot%3BendArrow%26quot%3B%3A%26quot%3Bnone%26quot%3B%2C%26quot%3Bsegment%26quot%3B%3A10%2C%26quot%3Bcurved%26quot%3B%3A1%7D%3BtreeFolding%3D1%3BtreeMoving%3D1%3BlabelBorderColor%3Dnone%3BfillColor%3D%23b1ddf0%3BstrokeColor%3D%2310739e%3BfontColor%3D%23000000%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%221093.5%22%20y%3D%22600%22%20width%3D%22103.5%22%20height%3D%2250%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" parent="5" vertex="1">
+                    <mxGeometry x="160.5" y="330" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;span style=&quot;color: rgba(0 , 0 , 0 , 0) ; font-family: monospace ; font-size: 0px&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22set%20book%20status%22%20style%3D%22ellipse%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3Balign%3Dcenter%3BnewEdgeStyle%3D%7B%26quot%3BedgeStyle%26quot%3B%3A%26quot%3BentityRelationEdgeStyle%26quot%3B%2C%26quot%3BstartArrow%26quot%3B%3A%26quot%3Bnone%26quot%3B%2C%26quot%3BendArrow%26quot%3B%3A%26quot%3Bnone%26quot%3B%2C%26quot%3Bsegment%26quot%3B%3A10%2C%26quot%3Bcurved%26quot%3B%3A1%7D%3BtreeFolding%3D1%3BtreeMoving%3D1%3BlabelBorderColor%3Dnone%3BfillColor%3D%23b1ddf0%3BstrokeColor%3D%2310739e%3BfontColor%3D%23000000%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%221093.5%22%20y%3D%22600%22%20width%3D%22103.5%22%20height%3D%2250%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" parent="5" vertex="1">
+                    <mxGeometry x="160.5" y="390" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;font color=&quot;#000000&quot;&gt;&amp;lt;&amp;lt;user&amp;gt;&amp;gt;&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;labelBorderColor=none;fillColor=#f8cecc;strokeColor=#b85450;gradientColor=#ea6b66;" parent="47" vertex="1">
+                    <mxGeometry x="80" y="130" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" style="edgeStyle=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#000000;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;" parent="47" source="6" target="9" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" style="edgeStyle=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#000000;labelBorderColor=none;fillColor=#b1ddf0;strokeColor=#10739e;" parent="47" source="6" target="20" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" style="edgeStyle=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#b1ddf0;strokeColor=#10739e;" parent="47" source="6" target="48" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
