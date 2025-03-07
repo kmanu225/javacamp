@@ -53,7 +53,7 @@ public class LoginPageController {
                     //The user is trying to connect as a manager ?
                     if (checkManager.isSelected() && Objects.equals(user.getCategory(), "M")) {
                         //comparison between the password entered and the password which is in the database.
-                        if (Objects.equals(new Password().sha256(this.password.getText()), user.getHashedPassword())) {
+                        if (Objects.equals(Password.sha256(this.password.getText()), user.getHashedPassword())) {
                             //System.out.println("connected as a manager!");
                             this.AlertUser.setText("connected as a manager!");
                             return true;
@@ -67,7 +67,7 @@ public class LoginPageController {
                         this.AlertUser.setText("Your haven't a manager profile.");
                         return false;
                     } else {
-                        if (Objects.equals(new Password().sha256(this.password.getText()), user.getHashedPassword())) {
+                        if (Objects.equals(Password.sha256(this.password.getText()), user.getHashedPassword())) {
                             //System.out.println("connected as a user!");
                             this.AlertUser.setText("connected as a user!");
                             return true;

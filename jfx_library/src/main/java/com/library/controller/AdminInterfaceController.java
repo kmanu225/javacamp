@@ -34,12 +34,11 @@ public class AdminInterfaceController {
     public CheckBox CheckBoxBorrowedBooks;
     public CheckBox CheckBoxAllLoans;
     public TableView<BookCopy> BooksTable;
-    public TableColumn<BookCopy, String>  TableBookTitle;
-    public TableColumn<BookCopy, String>  TableAuthor;
-    public TableColumn<BookCopy, String>  TableEditor;
+    public TableColumn<BookCopy, String> TableBookTitle;
+    public TableColumn<BookCopy, String> TableAuthor;
+    public TableColumn<BookCopy, String> TableEditor;
     public TableColumn<BookCopy, String> TableBookDescription;
     public TableColumn<BookCopy, Integer> TableBookIdAvailable;
-
 
     public TableView<HasBorrowed> LoansTable;
     public TableColumn<HasBorrowed, Integer> LoanTableBookId;
@@ -54,10 +53,8 @@ public class AdminInterfaceController {
     public Label MyCategory;
     public Label login;
 
-
-
     @FXML
-    private void initialize (){
+    private void initialize() {
         TableBookTitle.setCellValueFactory(cellData -> cellData.getValue().bookTitleProperty());
         TableAuthor.setCellValueFactory(cellData -> cellData.getValue().authorNameProperty());
         TableEditor.setCellValueFactory(cellData -> cellData.getValue().editorNameProperty());
@@ -96,7 +93,6 @@ public class AdminInterfaceController {
 
     }
 
-
     public void goToBooksPage(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminBooksInformation.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -122,32 +118,26 @@ public class AdminInterfaceController {
 
     public void SearchBook(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         this.resultArea.setText("");
-        if(!Objects.equals(this.BookTitle.getText(), "") || !Objects.equals(this.BookAuthor.getText(), "") || !Objects.equals(this.BookEditor.getText(), "")){
+        if (!Objects.equals(this.BookTitle.getText(), "") || !Objects.equals(this.BookAuthor.getText(), "") || !Objects.equals(this.BookEditor.getText(), "")) {
 
-            if(BookDb.checkBookExistence(this.BookTitle.getText(), this.BookAuthor.getText(), this.BookEditor.getText())) {
+            if (BookDb.checkBookExistence(this.BookTitle.getText(), this.BookAuthor.getText(), this.BookEditor.getText())) {
                 ObservableList<BookCopy> bookCopies = FXCollections.observableArrayList();
                 bookCopies.add(BookDb.searchBook(this.BookTitle.getText(), this.BookAuthor.getText(), this.BookEditor.getText()));
                 BooksTable.setItems(bookCopies);
-            }
-
-            else {
+            } else {
                 this.resultArea.setText("Book not found!");
             }
-        }
-
-        else {
+        } else {
             this.resultArea.setText("Fill all the fields please.");
         }
     }
 
     public void checkAvailableBooks(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        if(this.checkBoxAvailableBooks.isSelected()){
+        if (this.checkBoxAvailableBooks.isSelected()) {
             this.BooksTable.setItems(null);
             ObservableList<BookCopy> bookCopies = BookDb.searchAvailableBooks();
             BooksTable.setItems(bookCopies);
-        }
-
-        else{
+        } else {
             this.BooksTable.setItems(null);
         }
     }
@@ -155,40 +145,37 @@ public class AdminInterfaceController {
     public void CheckBoxSeeMyBooks(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Gateway gateway = (Gateway) stage.getUserData();
-        if(this.CheckBoxBorrowedBooks.isSelected()){
+        if (this.CheckBoxBorrowedBooks.isSelected()) {
             CheckBoxAllLoans.setSelected(false);
             ObservableList<HasBorrowed> hasBorrowed = BookDb.searchBorrowedBooksByMe(gateway.getUser().getLogin());
             LoansTable.setItems(hasBorrowed);
-        }
-        else{
+        } else {
             this.LoansTable.setItems(null);
         }
     }
 
     public void CheckBoxAllLoansAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        if(this.CheckBoxAllLoans.isSelected()){
+        if (this.CheckBoxAllLoans.isSelected()) {
             CheckBoxBorrowedBooks.setSelected(false);
             //this.BooksTable.setItems(null);
             ObservableList<HasBorrowed> hasBorrowed = BookDb.searchBorrowedBooks();
             LoansTable.setItems(hasBorrowed);
-        }
-
-        else{
+        } else {
             this.LoansTable.setItems(null);
         }
     }
 
-    public void showProfile(MouseEvent mouseEvent){
+    public void showProfile(MouseEvent mouseEvent) {
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         Gateway gateway = (Gateway) stage.getUserData();
 
-
         login.setText(gateway.getUser().getLogin());
-        MyName.setText("Surname: "+gateway.getUser().getFirstName());
-        MySurname.setText("Name: "+gateway.getUser().getLastName());
-        MyCategory.setText("Category: "+gateway.getUser().getCategory());
+        MyName.setText("Surname: " + gateway.getUser().getFirstName());
+        MySurname.setText("Name: " + gateway.getUser().getLastName());
+        MyCategory.setText("Category: " + gateway.getUser().getCategory());
 
     }
+
     public void ClearFields(ActionEvent actionEvent) {
 
         this.BookTitle.clear();

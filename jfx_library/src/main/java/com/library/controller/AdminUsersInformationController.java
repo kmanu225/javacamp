@@ -38,14 +38,14 @@ public class AdminUsersInformationController {
     public TextField emailText;
     public TextField loginText;
     public TableView<Utilisateur> UserTable;
-    public TableColumn<Utilisateur, String > userLogin;
-    public TableColumn<Utilisateur, String >  userFirstName;
-    public TableColumn<Utilisateur, String >  userLastName;
-    public TableColumn<Utilisateur, String >  userCategory;
+    public TableColumn<Utilisateur, String> userLogin;
+    public TableColumn<Utilisateur, String> userFirstName;
+    public TableColumn<Utilisateur, String> userLastName;
+    public TableColumn<Utilisateur, String> userCategory;
 
-    public TableColumn<Utilisateur, String >  userEmail;
-    public TableColumn<Utilisateur, Integer >  maxBooks;
-    public TableColumn<Utilisateur, Integer >  maxDays;
+    public TableColumn<Utilisateur, String> userEmail;
+    public TableColumn<Utilisateur, Integer> maxBooks;
+    public TableColumn<Utilisateur, Integer> maxDays;
     public TextField NewUserName;
     public TextField NewUserSurname;
     public TextField NewUserEmail;
@@ -54,11 +54,10 @@ public class AdminUsersInformationController {
 
     public TextArea resultArea;
 
-
     public TextField NewUserCategory;
 
     @FXML
-    private void initialize () throws SQLException, ClassNotFoundException {
+    private void initialize() throws SQLException, ClassNotFoundException {
         /*
         The setCellValueFactory(...) that we set on the table columns are used to determine
         which field inside the Employee objects should be used for the particular column.
@@ -67,7 +66,7 @@ public class AdminUsersInformationController {
         We're only using StringProperty values for our table columns in this example.
         When you want to use IntegerProperty or DoubleProperty, the setCellValueFactory(...)
         must have an additional asObject()):
-        */
+         */
         userLogin.setCellValueFactory(cellData -> cellData.getValue().loginProperty());
         userFirstName.setCellValueFactory(cellData -> cellData.getValue().FirstNameProperty());
         userLastName.setCellValueFactory(cellData -> cellData.getValue().LastNameProperty());
@@ -77,12 +76,11 @@ public class AdminUsersInformationController {
         maxDays.setCellValueFactory(cellData -> cellData.getValue().maxDaysProperty().asObject());
         updateView();
     }
-    
+
     public void goToAdminDashboard(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Gateway gateway = (Gateway) stage.getUserData();
         stage.setUserData(gateway);
-
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminInterface.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -103,7 +101,6 @@ public class AdminUsersInformationController {
         stage.show();
         stage.setFullScreen(true);
     }
-
 
     public void goToBooksPage(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminBooksInformation.fxml"));
@@ -128,28 +125,21 @@ public class AdminUsersInformationController {
 
     public void searchUser(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         resultArea.clear();
-        if(!Objects.equals(this.loginText.getText(), "") || !Objects.equals(this.nameText.getText(), "") ||
-                !Objects.equals(this.surnameText.getText(), "") ||  !Objects.equals(this.emailText.getText(), "")){
+        if (!Objects.equals(this.loginText.getText(), "") || !Objects.equals(this.nameText.getText(), "")
+                || !Objects.equals(this.surnameText.getText(), "") || !Objects.equals(this.emailText.getText(), "")) {
 
-
-            if(UtilisateurDb.checkExistence(this.loginText.getText(), this.nameText.getText(), this.surnameText.getText(), this.emailText.getText())) {
+            if (UtilisateurDb.checkExistence(this.loginText.getText(), this.nameText.getText(), this.surnameText.getText(), this.emailText.getText())) {
                 ObservableList<Utilisateur> users = FXCollections.observableArrayList();
                 users.add(UtilisateurDb.searchUser(this.loginText.getText(), this.nameText.getText(), this.surnameText.getText(), this.emailText.getText()));
                 UserTable.setItems(users);
-            }
-
-            else {
+            } else {
                 this.resultArea.setText("This user is not in our data base");
             }
-        }
-
-        else {
+        } else {
             this.resultArea.setText("Operation failed because the fields are empty.");
         }
 
     }
-
-
 
     public void searchUsers(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         resultArea.clear();
@@ -160,11 +150,12 @@ public class AdminUsersInformationController {
     public void getBlackList(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         this.resultArea.clear();
         ObservableList<Utilisateur> users = UtilisateurDb.getBlackList();
-        if(users.size() == 0){
+        if (users.isEmpty()) {
             this.resultArea.setText("There is nobody on the black list.");
         }
         UserTable.setItems(users);
     }
+
     public void updateView() throws SQLException, ClassNotFoundException {
         ObservableList<Utilisateur> users = UtilisateurDb.searchUsers();
         UserTable.setItems(users);
@@ -172,31 +163,23 @@ public class AdminUsersInformationController {
 
     public void generatePassword(ActionEvent actionEvent) {
         resultArea.clear();
-        new Password();
         this.NewUserPassword.setText(Password.generateRandomPassword(10));
     }
 
     public void AddUser(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException, ClassNotFoundException {
-        if(
-                !Objects.equals(this.NewUserLogin.getText(), "") && !Objects.equals(this.NewUserName.getText(), "")
+        if (!Objects.equals(this.NewUserLogin.getText(), "") && !Objects.equals(this.NewUserName.getText(), "")
                 && !Objects.equals(this.NewUserSurname.getText(), "") && !Objects.equals(this.NewUserEmail.getText(), "")
-                && !Objects.equals(this.NewUserPassword.getText(), "") && !Objects.equals(this.NewUserCategory.getText(), "")
-        ){
+                && !Objects.equals(this.NewUserPassword.getText(), "") && !Objects.equals(this.NewUserCategory.getText(), "")) {
             boolean presentLogin = UtilisateurDb.checkExistence(this.NewUserLogin.getText());
 
-            if(!presentLogin){
+            if (!presentLogin) {
                 UtilisateurDb.AddUser(this.NewUserLogin.getText(), this.NewUserName.getText(), this.NewUserSurname.getText(), this.NewUserEmail.getText(), this.NewUserPassword.getText(), this.NewUserCategory.getText());
                 this.resultArea.setText("The new user has been added.");
-            }
-
-            else {
+            } else {
                 resultArea.setText("This login is ever used! Choose an other one.");
             }
 
-
-        }
-
-        else{
+        } else {
             resultArea.setText("adding failed! Fill correctly all the fields before trying again.");
         }
     }
@@ -216,42 +199,35 @@ public class AdminUsersInformationController {
         Gateway gateway = (Gateway) stage.getUserData();
         String myLogin = gateway.getUser().getLogin();
 
-
         resultArea.clear();
-        if(!Objects.equals(this.changeCategoryLogin.getText(), "") && !Objects.equals(this.newCategory.getText(), "")){
+        if (!Objects.equals(this.changeCategoryLogin.getText(), "") && !Objects.equals(this.newCategory.getText(), "")) {
             UtilisateurDb.updateCategory(this.changeCategoryLogin.getText(), myLogin, this.newCategory.getText());
             updateView();
             this.resultArea.setText("The user category has been updated.");
-        }
-
-        else {
+        } else {
             resultArea.setText("updating failed! Fill correctly all the fields before trying again.");
         }
     }
 
     public void deleteUser(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         resultArea.clear();
-        if(!Objects.equals(this.loginText.getText(), "")) {
+        if (!Objects.equals(this.loginText.getText(), "")) {
             if (UtilisateurDb.checkExistence(this.loginText.getText())) {
                 UtilisateurDb.deleteUser(this.loginText.getText());
-            }
-            else {
+            } else {
                 this.resultArea.setText("The user you look for is not in our data base");
             }
-        }
-
-        else {
+        } else {
             this.resultArea.setText("Operation failed because the user login is empty.");
         }
     }
 
     public void genLogin(MouseEvent mouseEvent) {
         resultArea.clear();
-        if(!Objects.equals(this.NewUserName.getText(), "") && !Objects.equals(this.NewUserSurname.getText(), "")){
-            String login = this.NewUserName.getText().substring(0, 1)+this.NewUserSurname.getText()+ new Random().nextInt(20);
+        if (!Objects.equals(this.NewUserName.getText(), "") && !Objects.equals(this.NewUserSurname.getText(), "")) {
+            String login = this.NewUserName.getText().substring(0, 1) + this.NewUserSurname.getText() + new Random().nextInt(20);
             this.NewUserLogin.setText(login);
         }
     }
-
 
 }

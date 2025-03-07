@@ -1,8 +1,8 @@
 package com.library.model;
+
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
 
 public class Book {
 
@@ -12,11 +12,11 @@ public class Book {
     private StringProperty description = new SimpleStringProperty();
     private ListProperty<String> authors;
 
-
     //constructor
-    public Book(){
+    public Book() {
 
     }
+
     public String getBookTitle() {
         return bookTitle.get();
     }
@@ -28,7 +28,6 @@ public class Book {
     public void setBookTitle(String bookTitle) {
         this.bookTitle.set(bookTitle);
     }
-
 
     public String getAuthorName() {
         return authorName.get();
@@ -55,4 +54,3 @@ public class Book {
     }
 
 }
-

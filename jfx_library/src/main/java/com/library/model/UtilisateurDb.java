@@ -15,23 +15,25 @@ public class UtilisateurDb {
     public static void AddUser(String login, String lastName, String firstName, String emailAddress, String password, String category) throws SQLException, ClassNotFoundException, NoSuchAlgorithmException {
         Integer maxBooks = new Category().getMaxBooks(category);
         Integer maxDays = new Category().getMaxDays(category);
-        new Password();
-        DbUtils.dbExecuteUpdate("INSERT INTO Utilisateur (Login, LastName, FirstName, EmailAddress, HashedPassword, Category, maxBooks, maxDays)\n" +
-                "VALUES ('"+login+"','"+lastName+"','" +firstName+ "','" +emailAddress+ "','" + Password.sha256(password)+ "','" +category+ "'," +maxBooks+ "," +maxDays+")");
+        DbUtils.dbExecuteUpdate("""
+                                INSERT INTO Utilisateur (Login, LastName, FirstName, EmailAddress, HashedPassword, Category, maxBooks, maxDays)
+                                VALUES ('"""+login+"','"+lastName+"','" +firstName+ "','" +emailAddress+ "','" + Password.sha256(password)+ "','" +category+ "'," +maxBooks+ "," +maxDays+")");
     }
     public static void updateCategory(String userLogin, String managerLogin, String category) throws SQLException, ClassNotFoundException {
         Integer maxBooks = new Category().getMaxBooks(category);
         Integer maxDays = new Category().getMaxDays(category);
-        DbUtils.dbExecuteUpdate("UPDATE Utilisateur\n" +
-                "SET Category ='" +category+"', maxBooks = "+maxBooks+", maxDays = "+maxDays+"\n"+
+        DbUtils.dbExecuteUpdate("""
+                                UPDATE Utilisateur
+                                SET Category ='""" +category+"', maxBooks = "+maxBooks+", maxDays = "+maxDays+"\n"+
                 "WHERE Login= '"+userLogin+"'");
 
 
         LocalDate date = LocalDate.now();
        // System.out.println(date);
 
-        DbUtils.dbExecuteUpdate("INSERT INTO changeCategory (UserLogin, ManagerLogin, Date, NewCategory)\n" +
-                "VALUES ('"+userLogin+"','"+managerLogin+"','" +date+ "','" +category+"')");
+        DbUtils.dbExecuteUpdate("""
+                                INSERT INTO changeCategory (UserLogin, ManagerLogin, Date, NewCategory)
+                                VALUES ('"""+userLogin+"','"+managerLogin+"','" +date+ "','" +category+"')");
     }
     public static Utilisateur searchUser(String userLogin, String userName, String userSurname, String userEmail) throws SQLException, ClassNotFoundException {
         if(!Objects.equals(userLogin, "")){

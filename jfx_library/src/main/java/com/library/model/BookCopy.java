@@ -1,20 +1,20 @@
 package com.library.model;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class BookCopy extends Book{
+public class BookCopy extends Book {
 
     private IntegerProperty copyId = new SimpleIntegerProperty();
     private StringProperty editorName = new SimpleStringProperty();
 
     private Utilisateur borrower = new Utilisateur();
 
-    public BookCopy(){
+    public BookCopy() {
 
     }
-
 
     public int getCopyId() {
         return copyId.get();

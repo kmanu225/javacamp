@@ -6,8 +6,8 @@ public class Gateway {
 
     private Utilisateur user = new Utilisateur();
 
-
-    public Gateway(){}
+    public Gateway() {
+    }
 
     public Utilisateur getUser() {
         return user;
