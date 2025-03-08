@@ -7,8 +7,8 @@ import java.util.Objects;
 import java.util.Random;
 
 import com.library.model.Password;
-import com.library.model.Utilisateur;
-import com.library.model.UtilisateurDb;
+import com.library.model.User;
+import com.library.model.UserDb;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,15 +37,15 @@ public class AdminUsersInformationController {
     public TextField surnameText;
     public TextField emailText;
     public TextField loginText;
-    public TableView<Utilisateur> UserTable;
-    public TableColumn<Utilisateur, String> userLogin;
-    public TableColumn<Utilisateur, String> userFirstName;
-    public TableColumn<Utilisateur, String> userLastName;
-    public TableColumn<Utilisateur, String> userCategory;
+    public TableView<User> UserTable;
+    public TableColumn<User, String> userLogin;
+    public TableColumn<User, String> userFirstName;
+    public TableColumn<User, String> userLastName;
+    public TableColumn<User, String> userCategory;
 
-    public TableColumn<Utilisateur, String> userEmail;
-    public TableColumn<Utilisateur, Integer> maxBooks;
-    public TableColumn<Utilisateur, Integer> maxDays;
+    public TableColumn<User, String> userEmail;
+    public TableColumn<User, Integer> maxBooks;
+    public TableColumn<User, Integer> maxDays;
     public TextField NewUserName;
     public TextField NewUserSurname;
     public TextField NewUserEmail;
@@ -129,9 +129,9 @@ public class AdminUsersInformationController {
         if (!Objects.equals(this.loginText.getText(), "") || !Objects.equals(this.nameText.getText(), "")
                 || !Objects.equals(this.surnameText.getText(), "") || !Objects.equals(this.emailText.getText(), "")) {
 
-            if (UtilisateurDb.checkExistence(this.loginText.getText(), this.nameText.getText(), this.surnameText.getText(), this.emailText.getText())) {
-                ObservableList<Utilisateur> users = FXCollections.observableArrayList();
-                users.add(UtilisateurDb.searchUser(this.loginText.getText(), this.nameText.getText(), this.surnameText.getText(), this.emailText.getText()));
+            if (UserDb.checkExistence(this.loginText.getText(), this.nameText.getText(), this.surnameText.getText(), this.emailText.getText())) {
+                ObservableList<User> users = FXCollections.observableArrayList();
+                users.add(UserDb.searchUser(this.loginText.getText(), this.nameText.getText(), this.surnameText.getText(), this.emailText.getText()));
                 UserTable.setItems(users);
             } else {
                 this.resultArea.setText("This user is not in our data base");
@@ -144,13 +144,13 @@ public class AdminUsersInformationController {
 
     public void searchUsers(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         resultArea.clear();
-        ObservableList<Utilisateur> users = UtilisateurDb.searchUsers();
+        ObservableList<User> users = UserDb.searchUsers();
         UserTable.setItems(users);
     }
 
     public void getBlackList(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         this.resultArea.clear();
-        ObservableList<Utilisateur> users = UtilisateurDb.getBlackList();
+        ObservableList<User> users = UserDb.getBlackList();
         if (users.isEmpty()) {
             this.resultArea.setText("There is nobody on the black list.");
         }
@@ -158,7 +158,7 @@ public class AdminUsersInformationController {
     }
 
     public void updateView() throws SQLException, ClassNotFoundException {
-        ObservableList<Utilisateur> users = UtilisateurDb.searchUsers();
+        ObservableList<User> users = UserDb.searchUsers();
         UserTable.setItems(users);
     }
 
@@ -171,10 +171,10 @@ public class AdminUsersInformationController {
         if (!Objects.equals(this.NewUserLogin.getText(), "") && !Objects.equals(this.NewUserName.getText(), "")
                 && !Objects.equals(this.NewUserSurname.getText(), "") && !Objects.equals(this.NewUserEmail.getText(), "")
                 && !Objects.equals(this.NewUserPassword.getText(), "") && !Objects.equals(this.NewUserCategory.getText(), "")) {
-            boolean presentLogin = UtilisateurDb.checkExistence(this.NewUserLogin.getText());
+            boolean presentLogin = UserDb.checkExistence(this.NewUserLogin.getText());
 
             if (!presentLogin) {
-                UtilisateurDb.AddUser(this.NewUserLogin.getText(), this.NewUserName.getText(), this.NewUserSurname.getText(), this.NewUserEmail.getText(), this.NewUserPassword.getText(), this.NewUserCategory.getText());
+                UserDb.AddUser(this.NewUserLogin.getText(), this.NewUserName.getText(), this.NewUserSurname.getText(), this.NewUserEmail.getText(), this.NewUserPassword.getText(), this.NewUserCategory.getText());
                 this.resultArea.setText("The new user has been added.");
             } else {
                 resultArea.setText("This login is ever used! Choose an other one.");
@@ -202,7 +202,7 @@ public class AdminUsersInformationController {
 
         resultArea.clear();
         if (!Objects.equals(this.changeCategoryLogin.getText(), "") && !Objects.equals(this.newCategory.getText(), "")) {
-            UtilisateurDb.updateCategory(this.changeCategoryLogin.getText(), myLogin, this.newCategory.getText());
+            UserDb.updateCategory(this.changeCategoryLogin.getText(), myLogin, this.newCategory.getText());
             updateView();
             this.resultArea.setText("The user category has been updated.");
         } else {
@@ -213,8 +213,8 @@ public class AdminUsersInformationController {
     public void deleteUser(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         resultArea.clear();
         if (!Objects.equals(this.loginText.getText(), "")) {
-            if (UtilisateurDb.checkExistence(this.loginText.getText())) {
-                UtilisateurDb.deleteUser(this.loginText.getText());
+            if (UserDb.checkExistence(this.loginText.getText())) {
+                UserDb.deleteUser(this.loginText.getText());
             } else {
                 this.resultArea.setText("The user you look for is not in our data base");
             }

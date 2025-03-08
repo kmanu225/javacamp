@@ -287,8 +287,8 @@ public class BookDb {
     //Borrowed books
     public static ObservableList<HasBorrowed> searchBorrowedBooks() throws SQLException, ClassNotFoundException {
         ResultSet rs = DbUtils.dbExecuteQuery("""
-                SELECT * FROM Utilisateur
-                JOIN HasBorrowed ON Utilisateur.Login = HasBorrowed.BorrowerLogin
+                SELECT * FROM User
+                JOIN HasBorrowed ON User.Login = HasBorrowed.BorrowerLogin
                 JOIN BookCopy ON BookCopy.CopyID = HasBorrowed.BookCopyId
                 WHERE HasBorrowed.GiveBackDate IS NULL""");
         return Observe2(rs);
@@ -296,8 +296,8 @@ public class BookDb {
 
     public static ObservableList<HasBorrowed> searchBorrowedBooksByMe(String myLogin) throws SQLException, ClassNotFoundException {
         ResultSet rs = DbUtils.dbExecuteQuery("""
-                SELECT * FROM Utilisateur
-                JOIN HasBorrowed ON Utilisateur.Login = HasBorrowed.BorrowerLogin
+                SELECT * FROM User
+                JOIN HasBorrowed ON User.Login = HasBorrowed.BorrowerLogin
                 JOIN BookCopy ON BookCopy.CopyID = HasBorrowed.BookCopyId
                 WHERE HasBorrowed.BorrowerLogin = '""" + myLogin + "'");
         return Observe2(rs);
@@ -343,7 +343,7 @@ public class BookDb {
 
     public static void updateBorrowedBooks(Integer CopyId, String borrowerLogin) throws SQLException, ClassNotFoundException {
         String category = null;
-        ResultSet rs2 = DbUtils.dbExecuteQuery(" SELECT Category FROM Utilisateur WHERE Login = '" + borrowerLogin + "'");
+        ResultSet rs2 = DbUtils.dbExecuteQuery(" SELECT Category FROM User WHERE Login = '" + borrowerLogin + "'");
 
         if (rs2.next()) {
             category = rs2.getString(1);

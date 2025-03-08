@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 import com.library.model.BookDb;
-import com.library.model.UtilisateurDb;
+import com.library.model.UserDb;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -85,7 +85,7 @@ public class AdminBooksInformationController {
         if (!Objects.equals(bookToLendId.getText(), "") && !Objects.equals(bookToLendBorrowerLogin.getText(), "")) {
             if (BookDb.checkBookCopyExistence(Integer.valueOf(bookToLendId.getText()))) {
                 if (BookDb.checkForLend(Integer.valueOf(bookToLendId.getText()))) {
-                    if (UtilisateurDb.checkExistence(bookToLendBorrowerLogin.getText())) {
+                    if (UserDb.checkExistence(bookToLendBorrowerLogin.getText())) {
                         BookDb.updateBorrowedBooks(Integer.valueOf(bookToLendId.getText()), bookToLendBorrowerLogin.getText());
                         this.resultArea1.setText("Operation succeeded!");
                     } else {
@@ -192,7 +192,7 @@ public class AdminBooksInformationController {
         this.resultArea.setText("");
         if (!Objects.equals(bookToReturnId.getText(), "") && !Objects.equals(bookToReturnBorrowerLogin.getText(), "") && !Objects.equals(GiveBackDate.getText(), "")) {
             if (BookDb.checkBookCopyExistence(Integer.valueOf(bookToReturnId.getText()))) {
-                if (UtilisateurDb.checkExistence(bookToReturnBorrowerLogin.getText())) {
+                if (UserDb.checkExistence(bookToReturnBorrowerLogin.getText())) {
                     BookDb.updateReturnDate(Integer.valueOf(bookToReturnId.getText()), bookToReturnBorrowerLogin.getText(), LocalDate.parse(GiveBackDate.getText()));
                     this.resultArea2.setText("Operation succeeded!");
                 } else {

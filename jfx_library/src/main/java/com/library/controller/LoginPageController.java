@@ -4,8 +4,8 @@ import java.util.Objects;
 
 import com.library.model.DbUtils;
 import com.library.model.Password;
-import com.library.model.Utilisateur;
-import com.library.model.UtilisateurDb;
+import com.library.model.User;
+import com.library.model.UserDb;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,7 +45,7 @@ public class LoginPageController {
                 String NewLog = log.replaceAll("'", "");
                 // System.out.println(this.login.getText());
                 // System.out.println(NewLog);
-                Utilisateur user = UtilisateurDb.searchUser(NewLog);
+                User user = UserDb.searchUser(NewLog);
 
                 // check if the user is in the database
                 if (!Objects.equals(user.getLogin(), "")) {
@@ -100,7 +100,7 @@ public class LoginPageController {
             if (tryConnexion()) {
                 Gateway gateway = new Gateway();
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                gateway.setUser(UtilisateurDb.searchUser(login.getText()));
+                gateway.setUser(UserDb.searchUser(login.getText()));
 
                 if (!this.checkManager.isSelected()) {
                     FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("UserInterface.fxml"));

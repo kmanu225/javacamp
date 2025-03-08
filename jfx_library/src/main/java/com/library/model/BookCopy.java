@@ -10,7 +10,7 @@ public class BookCopy extends Book {
     private IntegerProperty copyId = new SimpleIntegerProperty();
     private StringProperty editorName = new SimpleStringProperty();
 
-    private Utilisateur borrower = new Utilisateur();
+    private User borrower = new User();
 
     public BookCopy() {
 
@@ -28,11 +28,11 @@ public class BookCopy extends Book {
         this.copyId.set(copyId);
     }
 
-    public Utilisateur getBorrower() {
+    public User getBorrower() {
         return borrower;
     }
 
-    public void setBorrower(Utilisateur borrower) {
+    public void setBorrower(User borrower) {
         this.borrower = borrower;
     }
 

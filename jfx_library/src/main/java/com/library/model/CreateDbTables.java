@@ -85,7 +85,7 @@ public class CreateDbTables {
                 
                 //////////////////////////////////////////////////
                 try (Statement stmt3 = con.createStatement()) {
-                    String sql3 = "CREATE TABLE IF NOT EXISTS  Utilisateur (Login VARCHAR(30) PRIMARY KEY, LastName VARCHAR(30), FirstName VARCHAR(30), EmailAddress VARCHAR(255), HashedPassword VARCHAR(255), Category CHAR(1), maxBooks INT, maxDays INT);";
+                    String sql3 = "CREATE TABLE IF NOT EXISTS  User (Login VARCHAR(30) PRIMARY KEY, LastName VARCHAR(30), FirstName VARCHAR(30), EmailAddress VARCHAR(255), HashedPassword VARCHAR(255), Category CHAR(1), maxBooks INT, maxDays INT);";
                     stmt3.executeUpdate(sql3);
                 }
                 System.out.println("Table User successfully!");
@@ -99,7 +99,7 @@ public class CreateDbTables {
                 
                 //////////////////////////////////////////////////
                 try (Statement stmt5 = con.createStatement()) {
-                    String sql5 = "CREATE TABLE IF NOT EXISTS  changeCategory (UserLogin VARCHAR(30), ManagerLogin VARCHAR(30), Date DATE, NewCategory CHAR(1), FOREIGN KEY (UserLogin) REFERENCES Utilisateur (Login), FOREIGN KEY (ManagerLogin) REFERENCES Utilisateur (Login));";
+                    String sql5 = "CREATE TABLE IF NOT EXISTS  changeCategory (UserLogin VARCHAR(30), ManagerLogin VARCHAR(30), Date DATE, NewCategory CHAR(1), FOREIGN KEY (UserLogin) REFERENCES User (Login), FOREIGN KEY (ManagerLogin) REFERENCES User (Login));";
                     stmt5.executeUpdate(sql5);
                 }
                 System.out.println("Table changeCategory successfully!");
@@ -113,7 +113,7 @@ public class CreateDbTables {
                 
                 //////////////////////////////////////////////////
                 try (Statement stmt7 = con.createStatement()) {
-                    String sql7 = "CREATE TABLE IF NOT EXISTS  HasBorrowed (BookCopyId INT, BorrowerLogin VARCHAR(30), BorrowingDate Date, LimitDate Date, GiveBackDate Date, FOREIGN KEY (BookCopyId) REFERENCES BookCopy (CopyId), FOREIGN KEY (BorrowerLogin) REFERENCES Utilisateur (Login))";  // PRIMARY KEY (BookCopyId, BorrowerLogin)
+                    String sql7 = "CREATE TABLE IF NOT EXISTS  HasBorrowed (BookCopyId INT, BorrowerLogin VARCHAR(30), BorrowingDate Date, LimitDate Date, GiveBackDate Date, FOREIGN KEY (BookCopyId) REFERENCES BookCopy (CopyId), FOREIGN KEY (BorrowerLogin) REFERENCES User (Login))";  // PRIMARY KEY (BookCopyId, BorrowerLogin)
                     stmt7.executeUpdate(sql7);
                 } // PRIMARY KEY (BookCopyId, BorrowerLogin)
                 System.out.println("Table BookCopy created successfully!");

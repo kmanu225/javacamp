@@ -1,19 +1,19 @@
 package com.library.controller;
 
-import com.library.model.Utilisateur;
+import com.library.model.User;
 
 public class Gateway {
 
-    private Utilisateur user = new Utilisateur();
+    private User user = new User();
 
     public Gateway() {
     }
 
-    public Utilisateur getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Utilisateur user) {
+    public void setUser(User user) {
         this.user = user;
     }
 }

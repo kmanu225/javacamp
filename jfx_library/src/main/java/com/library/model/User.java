@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 
 
 
-public class Utilisateur {
+public class User {
 
     private StringProperty Login =  new SimpleStringProperty();
     private StringProperty LastName = new SimpleStringProperty();
@@ -21,7 +21,7 @@ public class Utilisateur {
 
 
     //constructor
-    public Utilisateur(){
+    public User(){
     }
 
 
