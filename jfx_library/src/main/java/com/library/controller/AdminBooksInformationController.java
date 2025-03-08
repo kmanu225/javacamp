@@ -39,11 +39,12 @@ public class AdminBooksInformationController {
     public void goToAdminDashboard(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminInterface.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("AdminPage");
         stage.setScene(scene);
         stage.show();
-        stage.setFullScreen(true);
+       
     }
 
     public void goToUsersPage(ActionEvent actionEvent) throws IOException {
@@ -54,7 +55,7 @@ public class AdminBooksInformationController {
         stage.setTitle("UsersInformation");
         stage.setScene(scene);
         stage.show();
-        stage.setFullScreen(true);
+        
     }
 
     public void goToBooksPage(ActionEvent actionEvent) throws IOException {
@@ -65,7 +66,7 @@ public class AdminBooksInformationController {
         stage.setTitle("BooksInformationPage");
         stage.setScene(scene);
         stage.show();
-        stage.setFullScreen(true);
+        
     }
 
     public void LogOut(ActionEvent actionEvent) throws IOException {
@@ -76,7 +77,7 @@ public class AdminBooksInformationController {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
-        stage.setFullScreen(true);
+        
     }
 
     public void Lend(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -130,7 +131,7 @@ public class AdminBooksInformationController {
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         try {

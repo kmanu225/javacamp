@@ -78,7 +78,7 @@ public class AdminInterfaceController {
         stage.setTitle("AdminPage");
         stage.setScene(scene);
         stage.show();
-        stage.setFullScreen(true);
+        
     }
 
     public void goToUsersPage(ActionEvent actionEvent) throws IOException {
@@ -89,7 +89,7 @@ public class AdminInterfaceController {
         stage.setTitle("UsersInformation");
         stage.setScene(scene);
         stage.show();
-        stage.setFullScreen(true);
+        
 
     }
 
@@ -101,7 +101,7 @@ public class AdminInterfaceController {
         stage.setTitle("BooksInformationPage");
         stage.setScene(scene);
         stage.show();
-        stage.setFullScreen(true);
+        
 
     }
 
@@ -113,7 +113,7 @@ public class AdminInterfaceController {
         stage.setTitle("LoginPage");
         stage.setScene(scene);
         stage.show();
-        stage.setFullScreen(true);
+        
     }
 
     public void SearchBook(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {

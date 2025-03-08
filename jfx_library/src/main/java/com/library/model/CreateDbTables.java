@@ -49,7 +49,7 @@ public class CreateDbTables {
             System.out.print("The program takes ");
             System.out.print((System.currentTimeMillis()-start));
             System.out.print("ms");
-        }catch(Exception e){System.out.println(e);}
+        }catch(Exception e){e.printStackTrace();}
 
          */
 
@@ -121,7 +121,7 @@ public class CreateDbTables {
             System.out.println("All the Tables have been successfully created...");
 
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
@@ -141,7 +141,7 @@ public class CreateDbTables {
             System.out.println("Database " + DbName + " created successfully!");
 
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 }

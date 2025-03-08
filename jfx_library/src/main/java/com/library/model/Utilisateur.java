@@ -9,14 +9,14 @@ import javafx.beans.property.StringProperty;
 
 public class Utilisateur {
 
-    private StringProperty Login =  new SimpleStringProperty();;
-    private StringProperty LastName = new SimpleStringProperty();;
-    private StringProperty FirstName =  new SimpleStringProperty();;
-    private StringProperty emailAddress = new SimpleStringProperty();;
-    private StringProperty HashedPassword =  new SimpleStringProperty();;
-    private StringProperty Category = new SimpleStringProperty();;
-    private IntegerProperty maxBooks = new SimpleIntegerProperty();;
-    private IntegerProperty maxDays = new SimpleIntegerProperty();;
+    private StringProperty Login =  new SimpleStringProperty();
+    private StringProperty LastName = new SimpleStringProperty();
+    private StringProperty FirstName =  new SimpleStringProperty();
+    private StringProperty emailAddress = new SimpleStringProperty();
+    private StringProperty HashedPassword =  new SimpleStringProperty();
+    private StringProperty Category = new SimpleStringProperty();
+    private IntegerProperty maxBooks = new SimpleIntegerProperty();
+    private IntegerProperty maxDays = new SimpleIntegerProperty();
 
 
 

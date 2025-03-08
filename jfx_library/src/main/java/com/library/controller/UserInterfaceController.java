@@ -80,7 +80,7 @@ public class UserInterfaceController {
         stage.setTitle("AdminPage");
         stage.setScene(scene);
         stage.show();
-        stage.setFullScreen(true);
+        
     }
 
     public void LogOut(ActionEvent actionEvent) throws IOException {
@@ -89,7 +89,7 @@ public class UserInterfaceController {
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("LoginPage.css"))));
         stage.setTitle("LoginPage");
-        stage.setFullScreen(true);
+        
         stage.setScene(scene);
         stage.show();
 

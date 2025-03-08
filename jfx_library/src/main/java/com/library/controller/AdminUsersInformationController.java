@@ -84,11 +84,12 @@ public class AdminUsersInformationController {
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminInterface.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        
         scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("AdminInterface.css"))));
         stage.setTitle("AdminPage");
         stage.setScene(scene);
         stage.show();
-        stage.setFullScreen(true);
+        
     }
 
     public void goToUsersPage(ActionEvent actionEvent) throws IOException {
@@ -99,7 +100,7 @@ public class AdminUsersInformationController {
         stage.setTitle("UsersInformation");
         stage.setScene(scene);
         stage.show();
-        stage.setFullScreen(true);
+        
     }
 
     public void goToBooksPage(ActionEvent actionEvent) throws IOException {
@@ -110,7 +111,7 @@ public class AdminUsersInformationController {
         stage.setTitle("BooksInformationPage");
         stage.setScene(scene);
         stage.show();
-        stage.setFullScreen(true);
+        
     }
 
     public void LogOut(ActionEvent actionEvent) throws IOException {
@@ -120,7 +121,7 @@ public class AdminUsersInformationController {
         stage.setTitle("LoginPage");
         stage.setScene(scene);
         stage.show();
-        stage.setFullScreen(true);
+        
     }
 
     public void searchUser(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {

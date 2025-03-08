@@ -23,13 +23,10 @@ public class App extends Application {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("LoginPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-
             scene.getStylesheets().add(String.valueOf(App.getResourceOrNull("LoginPage.css")));
-            // Correct Image file path
-            stage.getIcons().add(new Image(Objects.requireNonNull(App.class.getResourceAsStream(BASE_PATH + "zlogo-b.png"))));
 
+            stage.getIcons().add(new Image(Objects.requireNonNull(App.class.getResourceAsStream(BASE_PATH + "zlogo-b.png"))));
             stage.setTitle("LoginPage");
-            stage.setMaximized(true);
             stage.setScene(scene);
             stage.show();
 

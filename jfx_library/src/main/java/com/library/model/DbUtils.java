@@ -24,7 +24,7 @@ public class DbUtils{
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/libraryDb", "root", "ocS-+o{$W0");
             //System.out.println("connected");
 
-        } catch (Exception e) {System.out.println(e);}
+        } catch (Exception e) {e.printStackTrace();}
     }
 
 
@@ -34,7 +34,7 @@ public class DbUtils{
             if (conn != null && !conn.isClosed()) {
                 conn.close();
             }
-        } catch (Exception e){System.out.println(e);}
+        } catch (Exception e){e.printStackTrace();}
     }
 
     //DB Execute Query Operation

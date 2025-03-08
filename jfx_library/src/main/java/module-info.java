@@ -7,8 +7,6 @@ module com {
     requires java.sql.rowset;
     // requires mysql.connector.java;
     
-    
-
     opens com.library.controller to javafx.fxml;
     exports com.library.controller;
 
