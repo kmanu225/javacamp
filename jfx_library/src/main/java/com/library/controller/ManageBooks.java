@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class AdminBooksInformationController {
+public class ManageBooks {
 
     public TextField bookToAddTitle;
     public TextField bookToAddFirstEdition;
@@ -37,7 +37,7 @@ public class AdminBooksInformationController {
     public TextField GiveBackDate;
 
     public void goToAdminDashboard(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminInterface.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminDashboard.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         
         Scene scene = new Scene(fxmlLoader.load());
@@ -48,10 +48,10 @@ public class AdminBooksInformationController {
     }
 
     public void goToUsersPage(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminUsersInformation.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageUsers.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("AdminUsersInformation.css"))));
+        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageUsers.css"))));
         stage.setTitle("UsersInformation");
         stage.setScene(scene);
         stage.show();
@@ -59,10 +59,10 @@ public class AdminBooksInformationController {
     }
 
     public void goToBooksPage(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminBooksInformation.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageBooks.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("AdminBooksInformation.css"))));
+        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageBooks.css"))));
         stage.setTitle("BooksInformationPage");
         stage.setScene(scene);
         stage.show();

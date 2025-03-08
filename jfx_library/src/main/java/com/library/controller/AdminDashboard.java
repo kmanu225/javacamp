@@ -23,7 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class UserInterfaceController {
+public class AdminDashboard {
 
     public TextField BookTitle;
     public TextField BookEditor;
@@ -32,12 +32,13 @@ public class UserInterfaceController {
     public Label resultArea;
     public CheckBox checkBoxAvailableBooks;
     public CheckBox CheckBoxBorrowedBooks;
-
+    public CheckBox CheckBoxAllLoans;
     public TableView<BookCopy> BooksTable;
     public TableColumn<BookCopy, String> TableBookTitle;
     public TableColumn<BookCopy, String> TableAuthor;
     public TableColumn<BookCopy, String> TableEditor;
     public TableColumn<BookCopy, String> TableBookDescription;
+    public TableColumn<BookCopy, Integer> TableBookIdAvailable;
 
     public TableView<HasBorrowed> LoansTable;
     public TableColumn<HasBorrowed, Integer> LoanTableBookId;
@@ -54,14 +55,12 @@ public class UserInterfaceController {
 
     @FXML
     private void initialize() {
-
-        //books in the library
         TableBookTitle.setCellValueFactory(cellData -> cellData.getValue().bookTitleProperty());
         TableAuthor.setCellValueFactory(cellData -> cellData.getValue().authorNameProperty());
         TableEditor.setCellValueFactory(cellData -> cellData.getValue().editorNameProperty());
         TableBookDescription.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
+        TableBookIdAvailable.setCellValueFactory(cellData -> cellData.getValue().copyIdProperty().asObject());
 
-        //books borrowed
         LoanTableBookId.setCellValueFactory(cellData -> cellData.getValue().bookCopyIdProperty().asObject());
         LoanTableBookTitle.setCellValueFactory(cellData -> cellData.getValue().bookTitleProperty());
         LoanTableUserEmail.setCellValueFactory(cellData -> cellData.getValue().userEmailProperty());
@@ -72,15 +71,38 @@ public class UserInterfaceController {
 
     }
 
-    public void goToUserDashboard(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("UserInterface.fxml"));
+    public void goToAdminDashboard(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminDashboard.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("UserInterface.css"))));
         stage.setTitle("AdminPage");
         stage.setScene(scene);
         stage.show();
         
+    }
+
+    public void goToUsersPage(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageUsers.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageUsers.css"))));
+        stage.setTitle("UsersInformation");
+        stage.setScene(scene);
+        stage.show();
+        
+
+    }
+
+    public void goToBooksPage(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageBooks.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageBooks.css"))));
+        stage.setTitle("BooksInformationPage");
+        stage.setScene(scene);
+        stage.show();
+        
+
     }
 
     public void LogOut(ActionEvent actionEvent) throws IOException {
@@ -89,31 +111,31 @@ public class UserInterfaceController {
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("LoginPage.css"))));
         stage.setTitle("LoginPage");
-        
         stage.setScene(scene);
         stage.show();
-
+        
     }
 
     public void SearchBook(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        this.resultArea.setText("");
         if (!Objects.equals(this.BookTitle.getText(), "") || !Objects.equals(this.BookAuthor.getText(), "") || !Objects.equals(this.BookEditor.getText(), "")) {
 
             if (BookDb.checkBookExistence(this.BookTitle.getText(), this.BookAuthor.getText(), this.BookEditor.getText())) {
                 ObservableList<BookCopy> bookCopies = FXCollections.observableArrayList();
-                bookCopies.add(BookDb.searchBook1(this.BookTitle.getText(), this.BookAuthor.getText(), this.BookEditor.getText()));
+                bookCopies.add(BookDb.searchBook(this.BookTitle.getText(), this.BookAuthor.getText(), this.BookEditor.getText()));
                 BooksTable.setItems(bookCopies);
             } else {
                 this.resultArea.setText("Book not found!");
             }
         } else {
-            this.resultArea.setText("Fill the fields!");
+            this.resultArea.setText("Fill all the fields please.");
         }
     }
 
     public void checkAvailableBooks(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (this.checkBoxAvailableBooks.isSelected()) {
             this.BooksTable.setItems(null);
-            ObservableList<BookCopy> bookCopies = BookDb.searchAvailableBooks2();
+            ObservableList<BookCopy> bookCopies = BookDb.searchAvailableBooks();
             BooksTable.setItems(bookCopies);
         } else {
             this.BooksTable.setItems(null);
@@ -124,6 +146,7 @@ public class UserInterfaceController {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Gateway gateway = (Gateway) stage.getUserData();
         if (this.CheckBoxBorrowedBooks.isSelected()) {
+            CheckBoxAllLoans.setSelected(false);
             ObservableList<HasBorrowed> hasBorrowed = BookDb.searchBorrowedBooksByMe(gateway.getUser().getLogin());
             LoansTable.setItems(hasBorrowed);
         } else {
@@ -131,11 +154,15 @@ public class UserInterfaceController {
         }
     }
 
-    public void ClearFields(ActionEvent actionEvent) {
-        this.BookTitle.clear();
-        this.BookEditor.clear();
-        this.BookAuthor.clear();
-        this.resultArea.setText("");
+    public void CheckBoxAllLoansAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        if (this.CheckBoxAllLoans.isSelected()) {
+            CheckBoxBorrowedBooks.setSelected(false);
+            //this.BooksTable.setItems(null);
+            ObservableList<HasBorrowed> hasBorrowed = BookDb.searchBorrowedBooks();
+            LoansTable.setItems(hasBorrowed);
+        } else {
+            this.LoansTable.setItems(null);
+        }
     }
 
     public void showProfile(MouseEvent mouseEvent) {
@@ -146,5 +173,14 @@ public class UserInterfaceController {
         MyName.setText("Surname: " + gateway.getUser().getFirstName());
         MySurname.setText("Name: " + gateway.getUser().getLastName());
         MyCategory.setText("Category: " + gateway.getUser().getCategory());
+
+    }
+
+    public void ClearFields(ActionEvent actionEvent) {
+
+        this.BookTitle.clear();
+        this.BookEditor.clear();
+        this.BookAuthor.clear();
+        this.resultArea.setText("");
     }
 }

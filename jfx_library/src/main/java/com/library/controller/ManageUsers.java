@@ -25,7 +25,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class AdminUsersInformationController {
+public class ManageUsers {
 
     public TextField changeCategoryLogin;
     public TextField newCategory;
@@ -82,10 +82,10 @@ public class AdminUsersInformationController {
         Gateway gateway = (Gateway) stage.getUserData();
         stage.setUserData(gateway);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminInterface.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminDashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         
-        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("AdminInterface.css"))));
+        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("AdminDashboard.css"))));
         stage.setTitle("AdminPage");
         stage.setScene(scene);
         stage.show();
@@ -93,10 +93,10 @@ public class AdminUsersInformationController {
     }
 
     public void goToUsersPage(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminUsersInformation.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageUsers.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("AdminUsersInformation.css"))));
+        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageUsers.css"))));
         stage.setTitle("UsersInformation");
         stage.setScene(scene);
         stage.show();
@@ -104,10 +104,10 @@ public class AdminUsersInformationController {
     }
 
     public void goToBooksPage(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminBooksInformation.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageBooks.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("AdminBooksInformation.css"))));
+        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageBooks.css"))));
         stage.setTitle("BooksInformationPage");
         stage.setScene(scene);
         stage.show();

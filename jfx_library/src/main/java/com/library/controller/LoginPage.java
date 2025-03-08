@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class LoginPageController {
+public class LoginPage {
 
     public VBox bigVbox;
     @FXML
@@ -103,20 +103,20 @@ public class LoginPageController {
                 gateway.setUser(UserDb.searchUser(login.getText()));
 
                 if (!this.checkManager.isSelected()) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("UserInterface.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("UserDashboard.fxml"));
                     stage.setUserData(gateway);
                     Scene scene = new Scene(fxmlLoader.load());
-                    scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("UserInterface.css"))));
+                    scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("UserDashboard.css"))));
                     stage.setTitle("UserPage");
                     stage.setScene(scene);
 
                     stage.show();
 
                 } else {
-                    FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminInterface.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminDashboard.fxml"));
                     stage.setUserData(gateway);
                     Scene scene = new Scene(fxmlLoader.load());
-                    scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("AdminInterface.css"))));
+                    scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("AdminDashboard.css"))));
                     stage.setTitle("AdminPage");
                     stage.setScene(scene);
 
