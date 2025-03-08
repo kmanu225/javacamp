@@ -73,56 +73,61 @@ public class AdminDashboard {
 
     public void goToAdminDashboard(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminDashboard.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setTitle("AdminPage");
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     public void goToUsersPage(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageUsers.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageUsers.css"))));
         stage.setTitle("UsersInformation");
         stage.setScene(scene);
         stage.show();
-        
 
     }
 
     public void goToBooksPage(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageBooks.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageBooks.css"))));
         stage.setTitle("BooksInformationPage");
         stage.setScene(scene);
         stage.show();
-        
 
     }
 
     public void LogOut(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("LoginPage.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("LoginPage.css"))));
         stage.setTitle("LoginPage");
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     public void SearchBook(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         this.resultArea.setText("");
-        if (!Objects.equals(this.BookTitle.getText(), "") || !Objects.equals(this.BookAuthor.getText(), "") || !Objects.equals(this.BookEditor.getText(), "")) {
+        if (!Objects.equals(this.BookTitle.getText(), "") || !Objects.equals(this.BookAuthor.getText(), "")
+                || !Objects.equals(this.BookEditor.getText(), "")) {
 
-            if (BookDb.checkBookExistence(this.BookTitle.getText(), this.BookAuthor.getText(), this.BookEditor.getText())) {
+            if (BookDb.checkBookExistence(this.BookTitle.getText(), this.BookAuthor.getText(),
+                    this.BookEditor.getText())) {
                 ObservableList<BookCopy> bookCopies = FXCollections.observableArrayList();
-                bookCopies.add(BookDb.searchBook(this.BookTitle.getText(), this.BookAuthor.getText(), this.BookEditor.getText()));
+                bookCopies.add(BookDb.searchBook(this.BookTitle.getText(), this.BookAuthor.getText(),
+                        this.BookEditor.getText()));
                 BooksTable.setItems(bookCopies);
             } else {
                 this.resultArea.setText("Book not found!");
@@ -157,7 +162,7 @@ public class AdminDashboard {
     public void CheckBoxAllLoansAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (this.CheckBoxAllLoans.isSelected()) {
             CheckBoxBorrowedBooks.setSelected(false);
-            //this.BooksTable.setItems(null);
+            // this.BooksTable.setItems(null);
             ObservableList<HasBorrowed> hasBorrowed = BookDb.searchBorrowedBooks();
             LoansTable.setItems(hasBorrowed);
         } else {

@@ -206,7 +206,7 @@ public class ManageUsers {
             updateView();
             this.resultArea.setText("The user category has been updated.");
         } else {
-            resultArea.setText("updating failed! Fill correctly all the fields before trying again.");
+            resultArea.setText("Update failed! Fill correctly all the fields before trying again.");
         }
     }
 

@@ -15,7 +15,7 @@ public class HasBorrowed {
     private StringProperty LimitDate = new SimpleStringProperty();
     private StringProperty GiveBackDate = new SimpleStringProperty();
 
-    public HasBorrowed(){
+    public HasBorrowed() {
 
     }
 

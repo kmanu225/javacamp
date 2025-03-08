@@ -22,6 +22,7 @@ public class App extends Application {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("LoginPage.fxml"));
+            
             Scene scene = new Scene(fxmlLoader.load());
             scene.getStylesheets().add(String.valueOf(App.getResourceOrNull("LoginPage.css")));
 

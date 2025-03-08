@@ -38,46 +38,49 @@ public class ManageBooks {
 
     public void goToAdminDashboard(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminDashboard.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        
         Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setTitle("AdminPage");
         stage.setScene(scene);
         stage.show();
-       
+
     }
 
     public void goToUsersPage(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageUsers.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageUsers.css"))));
         stage.setTitle("UsersInformation");
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     public void goToBooksPage(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageBooks.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageBooks.css"))));
         stage.setTitle("BooksInformationPage");
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     public void LogOut(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("LoginPage.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setTitle("LoginPage");
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
-        
+
     }
 
     public void Lend(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -86,7 +89,8 @@ public class ManageBooks {
             if (BookDb.checkBookCopyExistence(Integer.valueOf(bookToLendId.getText()))) {
                 if (BookDb.checkForLend(Integer.valueOf(bookToLendId.getText()))) {
                     if (UserDb.checkExistence(bookToLendBorrowerLogin.getText())) {
-                        BookDb.updateBorrowedBooks(Integer.valueOf(bookToLendId.getText()), bookToLendBorrowerLogin.getText());
+                        BookDb.updateBorrowedBooks(Integer.valueOf(bookToLendId.getText()),
+                                bookToLendBorrowerLogin.getText());
                         this.resultArea1.setText("Operation succeeded!");
                     } else {
                         this.resultArea1.setText("The user does not exists in our database.");
@@ -104,29 +108,31 @@ public class ManageBooks {
 
     public void add(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         try {
-            if (!Objects.equals(this.bookToAddTitle.getText(), "") && !Objects.equals(this.bookToAddFirstEdition.getText(), "")) {
+            if (!Objects.equals(this.bookToAddTitle.getText(), "")
+                    && !Objects.equals(this.bookToAddFirstEdition.getText(), "")) {
                 if (!BookDb.checkBookExistence(this.bookToAddTitle.getText(), this.bookToAddFirstEdition.getText())) {
-                    BookDb.AddBook(this.bookToAddTitle.getText(), this.bookToAddFirstEdition.getText(), this.bookToAddDescription.getText());
-                    //System.out.println("The book has been successfully added to the database.");
+                    BookDb.AddBook(this.bookToAddTitle.getText(), this.bookToAddFirstEdition.getText(),
+                            this.bookToAddDescription.getText());
                     this.resultArea.setText("The book has been successfully added to the database!");
                 }
             }
         } catch (Exception e) {
             this.resultArea.setText("Edition year should be an integer!");
-        }//{System.out.println("First edition year has to be an Integer and replace <'> by <''> ");}
+        }
 
         try {
-            if (!Objects.equals(this.bookToAddAuthor.getText(), "") && !Objects.equals(this.bookToAddBirthYear.getText(), "")) {
-                if (!BookDb.checkAuthorExistence(this.bookToAddAuthor.getText(), Integer.valueOf(this.bookToAddBirthYear.getText()))) {
-                    BookDb.AddAuthor(this.bookToAddAuthor.getText(), Integer.valueOf(this.bookToAddBirthYear.getText()));
-                    //System.out.println("The author have been successfully added in the database.");
+            if (!Objects.equals(this.bookToAddAuthor.getText(), "")
+                    && !Objects.equals(this.bookToAddBirthYear.getText(), "")) {
+                if (!BookDb.checkAuthorExistence(this.bookToAddAuthor.getText(),
+                        Integer.valueOf(this.bookToAddBirthYear.getText()))) {
+                    BookDb.AddAuthor(this.bookToAddAuthor.getText(),
+                            Integer.valueOf(this.bookToAddBirthYear.getText()));
                     this.resultArea.setText("The author have been successfully added in the database!");
                 }
             } else {
                 boolean a = Objects.equals(this.bookToAddAuthor.getText(), "");
                 boolean b = Objects.equals(this.bookToAddBirthYear.getText(), "");
                 if (a && !b || !a && b) {
-                    //System.out.println("Some necessary information about author miss.");
                     this.resultArea.setText("Fill author information!");
                 }
             }
@@ -135,12 +141,21 @@ public class ManageBooks {
         }
 
         try {
-            if (!Objects.equals(this.bookToAddAuthor.getText(), "") && !Objects.equals(this.bookToAddBirthYear.getText(), "") && !Objects.equals(this.bookToAddTitle.getText(), "") && !Objects.equals(this.bookToAddFirstEdition.getText(), "")) {
-                int id = BookDb.getAuthorId(this.bookToAddAuthor.getText(), Integer.valueOf(this.bookToAddBirthYear.getText()));
+            if (!Objects.equals(this.bookToAddAuthor.getText(), "")
+                    && !Objects.equals(this.bookToAddBirthYear.getText(), "")
+                    && !Objects.equals(this.bookToAddTitle.getText(), "")
+                    && !Objects.equals(this.bookToAddFirstEdition.getText(), "")) {
+                int id = BookDb.getAuthorId(this.bookToAddAuthor.getText(),
+                        Integer.valueOf(this.bookToAddBirthYear.getText()));
 
-                if (!BookDb.checkHasWrittenExistence(this.bookToAddTitle.getText(), Integer.valueOf(this.bookToAddFirstEdition.getText()), id) && BookDb.checkAuthorExistence(this.bookToAddAuthor.getText(), Integer.valueOf(this.bookToAddBirthYear.getText())) && BookDb.checkBookExistence(this.bookToAddTitle.getText(), this.bookToAddFirstEdition.getText())) {
-                    //System.out.println("ok1");
-                    BookDb.updateHasWritten(this.bookToAddTitle.getText(), Integer.valueOf(this.bookToAddFirstEdition.getText()), id);
+                if (!BookDb.checkHasWrittenExistence(this.bookToAddTitle.getText(),
+                        Integer.valueOf(this.bookToAddFirstEdition.getText()), id)
+                        && BookDb.checkAuthorExistence(this.bookToAddAuthor.getText(),
+                                Integer.valueOf(this.bookToAddBirthYear.getText()))
+                        && BookDb.checkBookExistence(this.bookToAddTitle.getText(),
+                                this.bookToAddFirstEdition.getText())) {
+                    BookDb.updateHasWritten(this.bookToAddTitle.getText(),
+                            Integer.valueOf(this.bookToAddFirstEdition.getText()), id);
                 }
             }
         } catch (Exception e) {
@@ -148,19 +163,25 @@ public class ManageBooks {
         }
 
         if (!Objects.equals(this.bookToAddEditorISBN.getText(), "")) {
-            if (!BookDb.checkEditorExistence(this.bookToAddEditorISBN.getText()) && !Objects.equals(this.bookToAddEditorISBN.getText(), "") && !Objects.equals(this.bookToAddEditionYear.getText(), "") && !Objects.equals(this.bookToAddEditor.getText(), "")) {
+            if (!BookDb.checkEditorExistence(this.bookToAddEditorISBN.getText())
+                    && !Objects.equals(this.bookToAddEditorISBN.getText(), "")
+                    && !Objects.equals(this.bookToAddEditionYear.getText(), "")
+                    && !Objects.equals(this.bookToAddEditor.getText(), "")) {
                 BookDb.AddEditor(this.bookToAddEditor.getText(), this.bookToAddEditorISBN.getText());
-                //System.out.println("The editor have been successfully added");
                 this.resultArea.setText("The editor have been successfully added!");
             }
 
         }
 
-        if (!Objects.equals(this.bookToAddEditorISBN.getText(), "") && !Objects.equals(this.bookToAddEditionYear.getText(), "") && !Objects.equals(this.bookToAddEditor.getText(), "") && !Objects.equals(this.bookToAddTitle.getText(), "") && !Objects.equals(this.bookToAddFirstEdition.getText(), "")) {
-            //System.out.println("ok2");
-            if (BookDb.checkEditorExistence(this.bookToAddEditorISBN.getText()) && BookDb.checkBookExistence(this.bookToAddTitle.getText(), this.bookToAddFirstEdition.getText())) {
-                //System.out.println("ok3");
-                BookDb.AddBookCopy(this.bookToAddId.getText(), this.bookToAddTitle.getText(), Integer.valueOf(this.bookToAddFirstEdition.getText()), this.bookToAddEditorISBN.getText());
+        if (!Objects.equals(this.bookToAddEditorISBN.getText(), "")
+                && !Objects.equals(this.bookToAddEditionYear.getText(), "")
+                && !Objects.equals(this.bookToAddEditor.getText(), "")
+                && !Objects.equals(this.bookToAddTitle.getText(), "")
+                && !Objects.equals(this.bookToAddFirstEdition.getText(), "")) {
+            if (BookDb.checkEditorExistence(this.bookToAddEditorISBN.getText())
+                    && BookDb.checkBookExistence(this.bookToAddTitle.getText(), this.bookToAddFirstEdition.getText())) {
+                BookDb.AddBookCopy(this.bookToAddId.getText(), this.bookToAddTitle.getText(),
+                        Integer.valueOf(this.bookToAddFirstEdition.getText()), this.bookToAddEditorISBN.getText());
             }
         }
 
@@ -190,16 +211,18 @@ public class ManageBooks {
 
     public void ValidateReturn(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         this.resultArea.setText("");
-        if (!Objects.equals(bookToReturnId.getText(), "") && !Objects.equals(bookToReturnBorrowerLogin.getText(), "") && !Objects.equals(GiveBackDate.getText(), "")) {
+        if (!Objects.equals(bookToReturnId.getText(), "") && !Objects.equals(bookToReturnBorrowerLogin.getText(), "")
+                && !Objects.equals(GiveBackDate.getText(), "")) {
             if (BookDb.checkBookCopyExistence(Integer.valueOf(bookToReturnId.getText()))) {
                 if (UserDb.checkExistence(bookToReturnBorrowerLogin.getText())) {
-                    BookDb.updateReturnDate(Integer.valueOf(bookToReturnId.getText()), bookToReturnBorrowerLogin.getText(), LocalDate.parse(GiveBackDate.getText()));
+                    BookDb.updateReturnDate(Integer.valueOf(bookToReturnId.getText()),
+                            bookToReturnBorrowerLogin.getText(), LocalDate.parse(GiveBackDate.getText()));
                     this.resultArea2.setText("Operation succeeded!");
                 } else {
-                    this.resultArea2.setText("The user does not exists in our database.");
+                    this.resultArea2.setText("The user does not exists in the database.");
                 }
             } else {
-                this.resultArea2.setText("This book doesn't exits in our database.");
+                this.resultArea2.setText("This book doesn't exits in the database.");
             }
         } else {
             this.resultArea2.setText("Fill all the fields please.");

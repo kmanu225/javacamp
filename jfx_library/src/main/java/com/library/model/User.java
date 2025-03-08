@@ -1,31 +1,26 @@
 package com.library.model;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-
-
-
 public class User {
 
-    private StringProperty Login =  new SimpleStringProperty();
+    private StringProperty Login = new SimpleStringProperty();
     private StringProperty LastName = new SimpleStringProperty();
-    private StringProperty FirstName =  new SimpleStringProperty();
+    private StringProperty FirstName = new SimpleStringProperty();
     private StringProperty emailAddress = new SimpleStringProperty();
-    private StringProperty HashedPassword =  new SimpleStringProperty();
+    private StringProperty HashedPassword = new SimpleStringProperty();
     private StringProperty Category = new SimpleStringProperty();
     private IntegerProperty maxBooks = new SimpleIntegerProperty();
     private IntegerProperty maxDays = new SimpleIntegerProperty();
 
-
-
-    //constructor
-    public User(){
+    // constructor
+    public User() {
     }
 
-
-    //Login
+    // Login
     public String getLogin() {
         return Login.get();
     }
@@ -38,7 +33,7 @@ public class User {
         this.Login.set(login);
     }
 
-    //LastName
+    // LastName
     public String getLastName() {
         return LastName.get();
     }
@@ -51,8 +46,7 @@ public class User {
         this.LastName.set(LastName);
     }
 
-
-    //FirstName
+    // FirstName
     public String getFirstName() {
         return FirstName.get();
     }
@@ -65,8 +59,7 @@ public class User {
         this.FirstName.set(FirstName);
     }
 
-
-    //User EmailAddress
+    // User EmailAddress
     public String getEmailAddress() {
         return emailAddress.get();
     }
@@ -79,8 +72,7 @@ public class User {
         this.emailAddress.set(emailAddress);
     }
 
-
-    //HashedPassword
+    // HashedPassword
     public String getHashedPassword() {
         return HashedPassword.get();
     }
@@ -93,8 +85,7 @@ public class User {
         this.HashedPassword.set(hashedPassword);
     }
 
-
-    //Category
+    // Category
     public String getCategory() {
         return Category.get();
     }
@@ -107,8 +98,7 @@ public class User {
         this.Category.set(category);
     }
 
-
-    //maxBooks
+    // maxBooks
     public int getMaxBooks() {
         return maxBooks.get();
     }
@@ -121,8 +111,7 @@ public class User {
         this.maxBooks.set(maxBooks);
     }
 
-
-    //maxDays
+    // maxDays
     public int getMaxDays() {
         return maxDays.get();
     }
@@ -134,6 +123,5 @@ public class User {
     public void setMaxDays(int maxDays) {
         this.maxDays.set(maxDays);
     }
-
 
 }

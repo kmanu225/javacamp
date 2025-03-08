@@ -6,3 +6,4 @@
 - scene builder
 - mysql db
 - maven
+- change statement to prepare statements

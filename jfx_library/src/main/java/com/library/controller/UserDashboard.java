@@ -55,13 +55,13 @@ public class UserDashboard {
     @FXML
     private void initialize() {
 
-        //books in the library
+        // books in the library
         TableBookTitle.setCellValueFactory(cellData -> cellData.getValue().bookTitleProperty());
         TableAuthor.setCellValueFactory(cellData -> cellData.getValue().authorNameProperty());
         TableEditor.setCellValueFactory(cellData -> cellData.getValue().editorNameProperty());
         TableBookDescription.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
 
-        //books borrowed
+        // books borrowed
         LoanTableBookId.setCellValueFactory(cellData -> cellData.getValue().bookCopyIdProperty().asObject());
         LoanTableBookTitle.setCellValueFactory(cellData -> cellData.getValue().bookTitleProperty());
         LoanTableUserEmail.setCellValueFactory(cellData -> cellData.getValue().userEmailProperty());
@@ -74,33 +74,37 @@ public class UserDashboard {
 
     public void goToUserDashboard(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("UserDashboard.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("UserDashboard.css"))));
         stage.setTitle("AdminPage");
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     public void LogOut(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("LoginPage.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("LoginPage.css"))));
         stage.setTitle("LoginPage");
-        
         stage.setScene(scene);
         stage.show();
 
     }
 
     public void SearchBook(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        if (!Objects.equals(this.BookTitle.getText(), "") || !Objects.equals(this.BookAuthor.getText(), "") || !Objects.equals(this.BookEditor.getText(), "")) {
+        if (!Objects.equals(this.BookTitle.getText(), "") || !Objects.equals(this.BookAuthor.getText(), "")
+                || !Objects.equals(this.BookEditor.getText(), "")) {
 
-            if (BookDb.checkBookExistence(this.BookTitle.getText(), this.BookAuthor.getText(), this.BookEditor.getText())) {
+            if (BookDb.checkBookExistence(this.BookTitle.getText(), this.BookAuthor.getText(),
+                    this.BookEditor.getText())) {
                 ObservableList<BookCopy> bookCopies = FXCollections.observableArrayList();
-                bookCopies.add(BookDb.searchBook1(this.BookTitle.getText(), this.BookAuthor.getText(), this.BookEditor.getText()));
+                bookCopies.add(BookDb.searchBook1(this.BookTitle.getText(), this.BookAuthor.getText(),
+                        this.BookEditor.getText()));
                 BooksTable.setItems(bookCopies);
             } else {
                 this.resultArea.setText("Book not found!");

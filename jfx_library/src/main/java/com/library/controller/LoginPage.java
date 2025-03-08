@@ -38,58 +38,42 @@ public class LoginPage {
                 this.AlertUser.setText("The server is not available. Please try again later.");
                 return false;
             }
-            // check if a text has been typed in the userLogin textfield
-            if (!Objects.equals(this.login.getText(), "")) {
+            if (!Objects.equals(this.login.getText(), "") || !Objects.equals(this.password.getText(), "")) {
 
                 String log = this.login.getText();
                 String NewLog = log.replaceAll("'", "");
-                // System.out.println(this.login.getText());
-                // System.out.println(NewLog);
                 User user = UserDb.searchUser(NewLog);
 
-                // check if the user is in the database
                 if (!Objects.equals(user.getLogin(), "")) {
 
-                    // The user is trying to connect as a manager ?
                     if (checkManager.isSelected() && Objects.equals(user.getCategory(), "M")) {
-                        // comparison between the password entered and the password which is in the
-                        // database.
                         if (Objects.equals(Password.sha256(this.password.getText()), user.getHashedPassword())) {
-                            // System.out.println("connected as a manager!");
-                            this.AlertUser.setText("connected as a manager!");
+                            this.AlertUser.setText("Connected as a manager!");
                             return true;
                         } else {
-                            // System.out.println("Your password is not correct!");
-                            this.AlertUser.setText("Your password is not correct!");
+                            this.AlertUser.setText("User does not exists or password incorrect!");
                             return false;
                         }
-                    } else if (checkManager.isSelected() && !Objects.equals(user.getCategory(), "M")) {
-                        // System.out.println("Your haven't a manager profile.");
-                        this.AlertUser.setText("Your haven't a manager profile.");
-                        return false;
+                    } else if (Objects.equals(Password.sha256(this.password.getText()), user.getHashedPassword())) {
+                        this.AlertUser.setText("Connected as a user!");
+                        return true;
                     } else {
-                        if (Objects.equals(Password.sha256(this.password.getText()), user.getHashedPassword())) {
-                            // System.out.println("connected as a user!");
-                            this.AlertUser.setText("connected as a user!");
-                            return true;
-                        } else {
-                            // System.out.println("Your password is not correct!");
-                            this.AlertUser.setText("Your password is not correct!");
-                            return false;
-                        }
+                        this.AlertUser.setText("User does not exists or password incorrect!");
+                        return false;
                     }
+
                 } else {
-                    // System.out.println("You have not any account in our library!");
-                    this.AlertUser.setText("You have not any account in our library!");
+                    this.AlertUser.setText("User does not exists or password incorrect!");
                     return false;
                 }
+            } else {
+                this.AlertUser.setText("Fill all the fields!");
+                return false;
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // System.out.println("Fill all the fields please.");
-        AlertUser.setText("Fill all the fields please.");
 
         return false;
     }
@@ -102,24 +86,24 @@ public class LoginPage {
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 gateway.setUser(UserDb.searchUser(login.getText()));
 
-                if (!this.checkManager.isSelected()) {
+                if (!checkManager.isSelected()) {
                     FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("UserDashboard.fxml"));
-                    stage.setUserData(gateway);
                     Scene scene = new Scene(fxmlLoader.load());
                     scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("UserDashboard.css"))));
+
+                    stage.setUserData(gateway);
                     stage.setTitle("UserPage");
                     stage.setScene(scene);
-
                     stage.show();
 
                 } else {
                     FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminDashboard.fxml"));
-                    stage.setUserData(gateway);
                     Scene scene = new Scene(fxmlLoader.load());
                     scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("AdminDashboard.css"))));
+
+                    stage.setUserData(gateway);
                     stage.setTitle("AdminPage");
                     stage.setScene(scene);
-
                     stage.show();
 
                 }
