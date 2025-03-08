@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.Objects;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -32,7 +33,7 @@ public class App extends Application {
             stage.show();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Platform.exit();;
         }
     }
 

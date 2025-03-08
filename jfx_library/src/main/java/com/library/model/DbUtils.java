@@ -23,7 +23,7 @@ public class DbUtils {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/libraryDb", "root", "ocS-+o{$W0");
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.exit(1);
         }
     }
 
@@ -33,7 +33,7 @@ public class DbUtils {
                 conn.close();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.exit(1);
         }
     }
 
@@ -50,7 +50,7 @@ public class DbUtils {
             crs.populate(resultSet);
 
         } catch (SQLException e) {
-            System.out.println("Problem occurred at executeQuery operation : " + e);
+            System.exit(1);
             throw e;
         } finally {
             if (resultSet != null) {
@@ -71,7 +71,7 @@ public class DbUtils {
             stmt = conn.createStatement();
             stmt.executeUpdate(sqlStmt);
         } catch (SQLException e) {
-            System.out.println("Problem occurred at executeUpdate operation : " + e);
+            System.exit(1);
             throw e;
         } finally {
             if (stmt != null) {

@@ -8,6 +8,7 @@ import java.util.Objects;
 import com.library.model.BookDb;
 import com.library.model.UserDb;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -137,7 +138,7 @@ public class ManageBooks {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Platform.exit();
         }
 
         try {
@@ -159,7 +160,7 @@ public class ManageBooks {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Platform.exit();
         }
 
         if (!Objects.equals(this.bookToAddEditorISBN.getText(), "")) {

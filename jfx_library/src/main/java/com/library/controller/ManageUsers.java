@@ -59,13 +59,17 @@ public class ManageUsers {
     @FXML
     private void initialize() throws SQLException, ClassNotFoundException {
         /*
-        The setCellValueFactory(...) that we set on the table columns are used to determine
-        which field inside the Employee objects should be used for the particular column.
-        The arrow -> indicates that we're using a Java 8 feature called Lambdas.
-        (Another option would be to use a PropertyValueFactory, but this is not type-safe
-        We're only using StringProperty values for our table columns in this example.
-        When you want to use IntegerProperty or DoubleProperty, the setCellValueFactory(...)
-        must have an additional asObject()):
+         * The setCellValueFactory(...) that we set on the table columns are used to
+         * determine
+         * which field inside the Employee objects should be used for the particular
+         * column.
+         * The arrow -> indicates that we're using a Java 8 feature called Lambdas.
+         * (Another option would be to use a PropertyValueFactory, but this is not
+         * type-safe
+         * We're only using StringProperty values for our table columns in this example.
+         * When you want to use IntegerProperty or DoubleProperty, the
+         * setCellValueFactory(...)
+         * must have an additional asObject()):
          */
         userLogin.setCellValueFactory(cellData -> cellData.getValue().loginProperty());
         userFirstName.setCellValueFactory(cellData -> cellData.getValue().FirstNameProperty());
@@ -74,6 +78,7 @@ public class ManageUsers {
         userCategory.setCellValueFactory(cellData -> cellData.getValue().categoryProperty());
         maxBooks.setCellValueFactory(cellData -> cellData.getValue().maxBooksProperty().asObject());
         maxDays.setCellValueFactory(cellData -> cellData.getValue().maxDaysProperty().asObject());
+
         updateView();
     }
 
@@ -84,44 +89,47 @@ public class ManageUsers {
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminDashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        
         scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("AdminDashboard.css"))));
+
         stage.setTitle("AdminPage");
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     public void goToUsersPage(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageUsers.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+
         scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageUsers.css"))));
         stage.setTitle("UsersInformation");
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     public void goToBooksPage(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageBooks.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageBooks.css"))));
         stage.setTitle("BooksInformationPage");
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     public void LogOut(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("LoginPage.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setTitle("LoginPage");
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     public void searchUser(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -129,9 +137,11 @@ public class ManageUsers {
         if (!Objects.equals(this.loginText.getText(), "") || !Objects.equals(this.nameText.getText(), "")
                 || !Objects.equals(this.surnameText.getText(), "") || !Objects.equals(this.emailText.getText(), "")) {
 
-            if (UserDb.checkExistence(this.loginText.getText(), this.nameText.getText(), this.surnameText.getText(), this.emailText.getText())) {
+            if (UserDb.checkExistence(this.loginText.getText(), this.nameText.getText(), this.surnameText.getText(),
+                    this.emailText.getText())) {
                 ObservableList<User> users = FXCollections.observableArrayList();
-                users.add(UserDb.searchUser(this.loginText.getText(), this.nameText.getText(), this.surnameText.getText(), this.emailText.getText()));
+                users.add(UserDb.searchUser(this.loginText.getText(), this.nameText.getText(),
+                        this.surnameText.getText(), this.emailText.getText()));
                 UserTable.setItems(users);
             } else {
                 this.resultArea.setText("This user is not in our data base");
@@ -169,12 +179,15 @@ public class ManageUsers {
 
     public void AddUser(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException, ClassNotFoundException {
         if (!Objects.equals(this.NewUserLogin.getText(), "") && !Objects.equals(this.NewUserName.getText(), "")
-                && !Objects.equals(this.NewUserSurname.getText(), "") && !Objects.equals(this.NewUserEmail.getText(), "")
-                && !Objects.equals(this.NewUserPassword.getText(), "") && !Objects.equals(this.NewUserCategory.getText(), "")) {
+                && !Objects.equals(this.NewUserSurname.getText(), "")
+                && !Objects.equals(this.NewUserEmail.getText(), "")
+                && !Objects.equals(this.NewUserPassword.getText(), "")
+                && !Objects.equals(this.NewUserCategory.getText(), "")) {
             boolean presentLogin = UserDb.checkExistence(this.NewUserLogin.getText());
 
             if (!presentLogin) {
-                UserDb.AddUser(this.NewUserLogin.getText(), this.NewUserName.getText(), this.NewUserSurname.getText(), this.NewUserEmail.getText(), this.NewUserPassword.getText(), this.NewUserCategory.getText());
+                UserDb.AddUser(this.NewUserLogin.getText(), this.NewUserName.getText(), this.NewUserSurname.getText(),
+                        this.NewUserEmail.getText(), this.NewUserPassword.getText(), this.NewUserCategory.getText());
                 this.resultArea.setText("The new user has been added.");
             } else {
                 resultArea.setText("This login is ever used! Choose an other one.");
@@ -201,7 +214,8 @@ public class ManageUsers {
         String myLogin = gateway.getUser().getLogin();
 
         resultArea.clear();
-        if (!Objects.equals(this.changeCategoryLogin.getText(), "") && !Objects.equals(this.newCategory.getText(), "")) {
+        if (!Objects.equals(this.changeCategoryLogin.getText(), "")
+                && !Objects.equals(this.newCategory.getText(), "")) {
             UserDb.updateCategory(this.changeCategoryLogin.getText(), myLogin, this.newCategory.getText());
             updateView();
             this.resultArea.setText("The user category has been updated.");
@@ -226,7 +240,8 @@ public class ManageUsers {
     public void genLogin(MouseEvent mouseEvent) {
         resultArea.clear();
         if (!Objects.equals(this.NewUserName.getText(), "") && !Objects.equals(this.NewUserSurname.getText(), "")) {
-            String login = this.NewUserName.getText().substring(0, 1) + this.NewUserSurname.getText() + new Random().nextInt(20);
+            String login = this.NewUserName.getText().substring(0, 1) + this.NewUserSurname.getText()
+                    + new Random().nextInt(20);
             this.NewUserLogin.setText(login);
         }
     }

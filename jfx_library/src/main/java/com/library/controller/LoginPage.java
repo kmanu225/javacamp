@@ -7,6 +7,7 @@ import com.library.model.Password;
 import com.library.model.User;
 import com.library.model.UserDb;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -61,7 +62,6 @@ public class LoginPage {
                         this.AlertUser.setText("User does not exists or password incorrect!");
                         return false;
                     }
-
                 } else {
                     this.AlertUser.setText("User does not exists or password incorrect!");
                     return false;
@@ -72,9 +72,8 @@ public class LoginPage {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Platform.exit();
         }
-
         return false;
     }
 
@@ -105,13 +104,10 @@ public class LoginPage {
                     stage.setTitle("AdminPage");
                     stage.setScene(scene);
                     stage.show();
-
                 }
-
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Platform.exit();
         }
     }
-
 }

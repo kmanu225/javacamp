@@ -1,18 +1,15 @@
 package com.library.model;
 
-import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Book {
 
-    //Fields using property object
     private StringProperty bookTitle = new SimpleStringProperty();
     private StringProperty authorName = new SimpleStringProperty();
     private StringProperty description = new SimpleStringProperty();
-    private ListProperty<String> authors;
+    // private ListProperty<String> authors;
 
-    //constructor
     public Book() {
 
     }
