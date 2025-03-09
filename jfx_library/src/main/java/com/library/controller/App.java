@@ -33,10 +33,9 @@ public class App extends Application {
             stage.show();
 
         } catch (Exception e) {
-            Platform.exit();;
+            Platform.exit();
         }
     }
-
     public static void main(String[] args) {
         launch(args);
     }
