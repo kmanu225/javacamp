@@ -2,8 +2,6 @@
 
 Java is one of the most widely used programming languages in the world, powering everything from web applications to enterprise systems and embedded devices. This project explores Java in-depth, covering its key concepts, development tools, packaging, execution, and frameworks.
 
-
-
 ## **Why Learn Java?**
 
 Java has remained a leading programming language for decades due to its versatility, reliability, and extensive ecosystem. Here are some compelling reasons to learn Java:
@@ -13,8 +11,6 @@ Java has remained a leading programming language for decades due to its versatil
 - **Strong Community & Ecosystem** – Java has an active developer community, numerous frameworks, and comprehensive documentation.
 - **Enterprise-Grade Performance** – Java is widely used in web applications, big data processing, and cloud computing.
 - **Security & Stability** – Java offers built-in security features and automatic memory management, ensuring stability and safety.
-
-
 
 ## **How to Write Java Code?**
 
@@ -45,10 +41,13 @@ Once you have written and compiled your Java application, you need to package it
 A JAR (Java ARchive) file is a compressed package that includes compiled Java classes and resources.
 
 To create a JAR file:
+
 ```sh
 jar cvf myapp.jar -C bin/ .
 ```
+
 To run the JAR file:
+
 ```sh
 java -jar myapp.jar
 ```
@@ -85,6 +84,7 @@ The JRE allows users to run Java applications without needing the full JDK. It i
 ```sh
 java -jar myapp.jar
 ```
+
 #### **Running an `.exe` File**
 
 Simply double-click the `.exe` file. If Java is required but missing, install the JRE.
@@ -92,8 +92,6 @@ Simply double-click the `.exe` file. If Java is required but missing, install th
 #### **Installing via `.msi`**
 
 Follow the Windows installation steps and complete the setup.
-
-
 
 ## **Popular Java Frameworks**
 
@@ -117,12 +115,9 @@ JavaFX is a powerful framework for building modern graphical applications. Featu
 
 JavaCard is used for running Java applications on smart cards, SIM cards, and secure elements in banking and telecommunications.
 
-
-
 ## **References**
 
 - [Oracle’s Java Learning Path](https://dev.java/learn/)
 - [Java Tutorial for Beginners (W3Schools)](https://www.w3schools.com/java/)
 - [JDK vs JRE vs JVM (GeeksForGeeks)](https://www.geeksforgeeks.org/differences-jdk-jre-jvm/)
 - [Deep Java Guide by J.M. Doudoux](https://www.jmdoudoux.fr/java/dej/chap-frameworks.htm)
-

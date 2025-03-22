@@ -1,6 +1,6 @@
 # POP vs OOP 
 
-![[images/oop_pop.png]]
+![POO](ressources/images/oop_pop.png)
 
 Programming languages can be classified in two categories. Procedural programming language and object oriented programming (OOP) languages. 
 
@@ -14,7 +14,7 @@ OOP presents several advantages:
 - OOP makes it possible to create full reusable applications with less code and shorter development time
 
 
-# Classes and Objects
+## Classes and Objects
 
 A Class is like an object constructor, or a "blueprint" for creating objects. It defines attributes (variables) and behaviors (methods) associated with an object.
 
@@ -46,7 +46,7 @@ public class Main {   // Main class
 }
 
 ```
-## Constructor
+#### Constructor
 A constructor in Java is a special method that is used to initialize objects. The constructor is called when an object of a class is created. It can be used to set initial values for object attributes
 
 Note that the constructor name must match the class name, and it cannot have a return type (like void). Also note that the constructor is called when the object is created. All classes have constructors by default: if you do not create a class constructor yourself, Java creates one for you. However, then you are not able to set initial values for object attributes.
@@ -92,9 +92,9 @@ public class Main {
 
 ```
 
-### Access and Non-Access Modifiers in Java
+###### Access and Non-Access Modifiers in Java
 
-#### Access Modifiers
+######## Access Modifiers
 
 | Modifier    | For Classes? | For Attributes, Methods, Constructors? | Description                                                         |
 | ----------- | ------------ | -------------------------------------- | ------------------------------------------------------------------- |
@@ -102,7 +102,7 @@ public class Main {
 | `private`   | ❌ No         | ✅ Yes                                  | Accessible only within the declared class.                          |
 | `default`   | ✅ Yes        | ✅ Yes                                  | Accessible within the same package (when no modifier is specified). |
 | `protected` | ❌ No         | ✅ Yes                                  | Accessible within the same package and by subclasses.               |
-#### Non-Access Modifiers
+######## Non-Access Modifiers
 
 | Modifier                       | Description                                                                                |
 | ------------------------------ | ------------------------------------------------------------------------------------------ |
@@ -118,7 +118,7 @@ public class Main {
 | `volatile`                     | Ensures the variable is always read from main memory (not cached by threads).              |
 
 
-# Encapsulation
+## Encapsulation
 Sensitive data is hidden from direct access by users. It allows programmers to control access to an object's attributes, improving data security and flexibility. 
  In Java, encapsulation is achieved by:
 
@@ -158,7 +158,7 @@ public class Main {
 ```
 
 
-# Inheritance
+## Inheritance
 
 **Inheritance** is a fundamental concept in object-oriented programming that allows one class to acquire the attributes and methods of another class. This promotes **code reusability** and establishes a structured class hierarchy. Inheritance needs three components:
 
@@ -195,18 +195,18 @@ public class Main {
 
 ```
 
-### **Benefits of Inheritance:**
+###### **Benefits of Inheritance:**
 
 ✅ **Code Reusability** – Avoids redundant code by allowing subclasses to reuse parent class functionality.  
 ✅ **Better Organization** – Establishes a clear class hierarchy, making the code more structured.  
 ✅ **Easier Maintenance** – Changes in the parent class automatically apply to child classes, reducing maintenance effort.
 
 
-# Polymorphisme
+## Polymorphisme
 
 **Polymorphism** means **"many forms"** and allows a method to perform different tasks in related classes. It enables a single interface to be used for different types, enhancing **code reusability** and **flexibility** in object-oriented programming.
 
-### **Types of Polymorphism:**
+###### **Types of Polymorphism:**
 
 1. **Method Overriding (Runtime Polymorphism)**
     - Occurs when a subclass **overrides** a method from its parent class.
@@ -266,14 +266,14 @@ public class Main {
 }
 ```
 
-### **Key Benefits of Polymorphism**
+###### **Key Benefits of Polymorphism**
 
 ✅ **Code Reusability** – Allows a single method to work with different types and classes.  
 ✅ **Flexibility** – The same method name can be used for different tasks, improving readability.  
 ✅ **Scalability** – New functionalities can be added without modifying existing code.
 
 
-# Abstraction
+## Abstraction
 
 Data abstraction is a fundamental concept in Java that involves hiding unnecessary details while exposing only essential information to the user. This helps in simplifying complex systems by focusing on what an object does rather than how it does it. In Java, abstraction is implemented using abstract classes and interfaces. 
 
@@ -311,7 +311,7 @@ public class Main {
     }
 }
 ```
-# Interface
+## Interface
 
 An interface in Java is a completely abstract class that defines a set of methods without implementation. It serves as a blueprint for classes, ensuring that they follow a specific structure.
 
@@ -349,7 +349,7 @@ public class Main {
 ```
 
 
-# Difference Abstraction vs Interfaces
+## Difference Abstraction vs Interfaces
 
 | Points                | Abstract Class                                                                                                     | Interface                                                                           |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
@@ -360,7 +360,7 @@ public class Main {
 | Variables             | Can have member variables (final, non-final, static, non-static).                                                  | Variables are implicitly public, static, and final (constants).                     |
 
 
-# Java Enum – A Special Type of Class
+## Java Enum – A Special Type of Class
 
 An enum is a special type of class used to define a fixed set of constants. It is similar to a class but is primarily used for representing values that do not change, such as days of the week, colors, or directions. 
 
@@ -382,9 +382,9 @@ enum Day {
 
 // Enum with Constructor and Method
 enum Color {
-    RED("#FF0000"),
-    GREEN("#00FF00"),
-    BLUE("#0000FF");
+    RED("##FF0000"),
+    GREEN("##00FF00"),
+    BLUE("##0000FF");
 
     private String hexCode;
 
