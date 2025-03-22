@@ -13,7 +13,6 @@ OOP presents several advantages:
 - OOP helps to keep the Java code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug
 - OOP makes it possible to create full reusable applications with less code and shorter development time
 
-
 ## Classes and Objects
 
 A Class is like an object constructor, or a "blueprint" for creating objects. It defines attributes (variables) and behaviors (methods) associated with an object.
@@ -46,7 +45,9 @@ public class Main {   // Main class
 }
 
 ```
+
 #### Constructor
+
 A constructor in Java is a special method that is used to initialize objects. The constructor is called when an object of a class is created. It can be used to set initial values for object attributes
 
 Note that the constructor name must match the class name, and it cannot have a return type (like void). Also note that the constructor is called when the object is created. All classes have constructors by default: if you do not create a class constructor yourself, Java creates one for you. However, then you are not able to set initial values for object attributes.
@@ -94,8 +95,6 @@ public class Main {
 
 ###### Access and Non-Access Modifiers in Java
 
-######## Access Modifiers
-
 | Modifier    | For Classes? | For Attributes, Methods, Constructors? | Description                                                         |
 | ----------- | ------------ | -------------------------------------- | ------------------------------------------------------------------- |
 | `public`    | ✅ Yes        | ✅ Yes                                  | Accessible by all classes.                                          |
@@ -119,6 +118,7 @@ public class Main {
 
 
 ## Encapsulation
+
 Sensitive data is hidden from direct access by users. It allows programmers to control access to an object's attributes, improving data security and flexibility. 
  In Java, encapsulation is achieved by:
 
@@ -201,7 +201,6 @@ public class Main {
 ✅ **Better Organization** – Establishes a clear class hierarchy, making the code more structured.  
 ✅ **Easier Maintenance** – Changes in the parent class automatically apply to child classes, reducing maintenance effort.
 
-
 ## Polymorphisme
 
 **Polymorphism** means **"many forms"** and allows a method to perform different tasks in related classes. It enables a single interface to be used for different types, enhancing **code reusability** and **flexibility** in object-oriented programming.
@@ -238,6 +237,7 @@ public class Main {
 ```
 
 2. **Method Overloading (Compile-time Polymorphism)**
+
     - Occurs when multiple methods in the same class have the **same name** but different parameters.
     - The method call is resolved at **compile-time** based on parameter types.
 
@@ -272,11 +272,9 @@ public class Main {
 ✅ **Flexibility** – The same method name can be used for different tasks, improving readability.  
 ✅ **Scalability** – New functionalities can be added without modifying existing code.
 
-
 ## Abstraction
 
-Data abstraction is a fundamental concept in Java that involves hiding unnecessary details while exposing only essential information to the user. This helps in simplifying complex systems by focusing on what an object does rather than how it does it. In Java, abstraction is implemented using abstract classes and interfaces. 
-
+Data abstraction is a fundamental concept in Java that involves hiding unnecessary details while exposing only essential information to the user. This helps in simplifying complex systems by focusing on what an object does rather than how it does it. In Java, abstraction is implemented using abstract classes and interfaces.
 
 An abstract class is a class that cannot be instantiated and serves as a blueprint for other classes. It can contain both abstract methods (methods without a body) and regular methods (with a defined implementation). A subclass must inherit from the abstract class and provide concrete implementations for its abstract methods.
 
@@ -311,6 +309,7 @@ public class Main {
     }
 }
 ```
+
 ## Interface
 
 An interface in Java is a completely abstract class that defines a set of methods without implementation. It serves as a blueprint for classes, ensuring that they follow a specific structure.
@@ -348,7 +347,6 @@ public class Main {
 }
 ```
 
-
 ## Difference Abstraction vs Interfaces
 
 | Points                | Abstract Class                                                                                                     | Interface                                                                           |
@@ -359,10 +357,9 @@ public class Main {
 | Access Modifiers      | Methods and properties can have any access modifier (public, protected, private).                                  | Methods and properties are implicitly public.                                       |
 | Variables             | Can have member variables (final, non-final, static, non-static).                                                  | Variables are implicitly public, static, and final (constants).                     |
 
-
 ## Java Enum – A Special Type of Class
 
-An enum is a special type of class used to define a fixed set of constants. It is similar to a class but is primarily used for representing values that do not change, such as days of the week, colors, or directions. 
+An enum is a special type of class used to define a fixed set of constants. It is similar to a class but is primarily used for representing values that do not change, such as days of the week, colors, or directions.
 
 Enums provide clarity, type safety, and better code organization when working with a fixed set of values. They help prevent errors by restricting variables to predefined options, making them useful for scenarios like defining days of the week, color palettes, or card suits.
 
@@ -373,7 +370,6 @@ Enums provide clarity, type safety, and better code organization when working wi
 |**Object Creation**|Cannot create instances|Can create objects using `new`|
 |**Inheritance**|Cannot extend other classes|Can extend other classes|
 |**Implements Interfaces**|Yes|Yes|
-
 
 ```java
 enum Day { 

@@ -2,7 +2,7 @@
 
 Java is one of the most widely used programming languages in the world, powering everything from web applications to enterprise systems and embedded devices. This project explores Java in-depth, covering its key concepts, development tools, packaging, execution, and frameworks.
 
-## **Why Learn Java?**
+## **Why Learn Java ?**
 
 Java has remained a leading programming language for decades due to its versatility, reliability, and extensive ecosystem. Here are some compelling reasons to learn Java:
 
@@ -12,7 +12,7 @@ Java has remained a leading programming language for decades due to its versatil
 - **Enterprise-Grade Performance** – Java is widely used in web applications, big data processing, and cloud computing.
 - **Security & Stability** – Java offers built-in security features and automatic memory management, ensuring stability and safety.
 
-## **How to Write Java Code?**
+## **How to Write Java Code ?**
 
 ### **The Java Development Kit (JDK)**
 
@@ -30,9 +30,7 @@ The JVM is crucial for Java’s platform independence. It converts Java bytecode
 - **Just-In-Time Compilation (JIT)** – Optimizes performance by converting bytecode to native machine code.
 - **Security Features** – Sandboxing, runtime verification, and access control mechanisms.
 
-
-
-## **How to Package Your Java Application?**
+## **How to Package Your Java Application ?**
 
 Once you have written and compiled your Java application, you need to package it for distribution.
 
@@ -66,9 +64,7 @@ To create a Windows installer (`.msi`), use:
 - **WiX Toolset** ([wixtoolset.org](https://wixtoolset.org/))
 - **Advanced Installer** ([advancedinstaller.com](https://www.advancedinstaller.com/java.html))
 
-
-
-## **How to Run Java Programs?**
+## **How to Run Java Programs ?**
 
 ### **Using the Java Runtime Environment (JRE)**
 
