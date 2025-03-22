@@ -1,10 +1,13 @@
 # POP vs OOP 
-![[oop_pop.png]]
+
+![[images/oop_pop.png]]
+
 Programming languages can be classified in two categories. Procedural programming language and object oriented programming (OOP) languages. 
 
 Procedural programming is about writing procedures or methods that perform operations on the data while object-oriented programming is about creating objects that contain both data and methods.
 
 OOP presents several advantages:
+
 - OOP provides a clear structure for the programs
 - OOP is faster and easier to execute due to its structure.
 - OOP helps to keep the Java code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug
@@ -12,6 +15,7 @@ OOP presents several advantages:
 
 
 # Classes and Objects
+
 A Class is like an object constructor, or a "blueprint" for creating objects. It defines attributes (variables) and behaviors (methods) associated with an object.
 
 ```java
@@ -117,6 +121,7 @@ public class Main {
 # Encapsulation
 Sensitive data is hidden from direct access by users. It allows programmers to control access to an object's attributes, improving data security and flexibility. 
  In Java, encapsulation is achieved by:
+
 - Declaring class variables (attributes) as private, making them inaccessible outside the class.
 - Providing public getter and setter methods to access and modify these private variables.
 
@@ -154,7 +159,9 @@ public class Main {
 
 
 # Inheritance
+
 **Inheritance** is a fundamental concept in object-oriented programming that allows one class to acquire the attributes and methods of another class. This promotes **code reusability** and establishes a structured class hierarchy. Inheritance needs three components:
+
 - **Superclass (Parent Class)** : This is the existing class from which attributes and methods are inherited.
 - **Subclass (Child Class)** : This is the class that inherits from the **superclass**. It can use and extend the functionalities of the parent class
 - **`extends` Keyword** : The `extends` keyword is used to establish inheritance between a subclass and a superclass.
@@ -198,6 +205,7 @@ public class Main {
 # Polymorphisme
 
 **Polymorphism** means **"many forms"** and allows a method to perform different tasks in related classes. It enables a single interface to be used for different types, enhancing **code reusability** and **flexibility** in object-oriented programming.
+
 ### **Types of Polymorphism:**
 
 1. **Method Overriding (Runtime Polymorphism)**
@@ -257,6 +265,7 @@ public class Main {
     }
 }
 ```
+
 ### **Key Benefits of Polymorphism**
 
 ✅ **Code Reusability** – Allows a single method to work with different types and classes.  
@@ -265,6 +274,7 @@ public class Main {
 
 
 # Abstraction
+
 Data abstraction is a fundamental concept in Java that involves hiding unnecessary details while exposing only essential information to the user. This helps in simplifying complex systems by focusing on what an object does rather than how it does it. In Java, abstraction is implemented using abstract classes and interfaces. 
 
 
@@ -302,11 +312,13 @@ public class Main {
 }
 ```
 # Interface
+
 An interface in Java is a completely abstract class that defines a set of methods without implementation. It serves as a blueprint for classes, ensuring that they follow a specific structure.
 
 Unlike regular classes, an interface cannot be instantiated and must be implemented by another class using the implements keyword (instead of extends for abstract class). The implementing class provides the method bodies for all the methods declared in the interface.
 
 Interfaces share similarities with abstract classes, but they have key differences:
+
 - All methods in an interface are public and abstract by default.
 - All attributes in an interface are public, static, and final by default.
 - Interfaces cannot have constructors, as they cannot be used to create objects.
@@ -349,6 +361,7 @@ public class Main {
 
 
 # Java Enum – A Special Type of Class
+
 An enum is a special type of class used to define a fixed set of constants. It is similar to a class but is primarily used for representing values that do not change, such as days of the week, colors, or directions. 
 
 Enums provide clarity, type safety, and better code organization when working with a fixed set of values. They help prevent errors by restricting variables to predefined options, making them useful for scenarios like defining days of the week, color palettes, or card suits.
