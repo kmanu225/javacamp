@@ -89,7 +89,7 @@ public class CreateDbTables {
             System.out.println("You are connected to server!");
 
             Statement stmt = con.createStatement();
-            String sql = "CREATE DATABASE IF IT DOES NOT EXIST " + DbName;
+            String sql = "CREATE DATABASE IF NOT EXISTS " + DbName;
             stmt.executeUpdate(sql);
 
             System.out.println("Database " + DbName + " created successfully!");
