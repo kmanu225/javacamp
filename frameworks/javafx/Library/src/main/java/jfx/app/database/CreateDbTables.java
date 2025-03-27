@@ -22,9 +22,42 @@ public class CreateDbTables {
         UserDb.AddUser("java_C", "java_C", "java_C", "java_C@java.oracle", "password", "C");
         UserDb.AddUser("java_banned", "java_banned", "java_banned", "java_banned@java.oracle", "password", "S");
         System.out.println("Users javafx, java_A, java_B, java_C, java_banned have been created successfully");
+
+
+        fillBookTable("Efuru", "1966", "A novel about a strong Igbo woman defying societal expectations.",
+                "Flora Nwapa", "1931", "978-0435909727", "Heinemann");
+        fillBookTable("The Joys of Motherhood", "1979",
+                "A poignant novel about the struggles of a Nigerian woman in a changing society.",
+                "Buchi Emecheta", "1944", "978-0807616230", "George Braziller");
+        fillBookTable("The Old Man and the Medal", "1956", "A satirical novel about colonial injustice in Cameroon.",
+                "Ferdinand Oyono", "1929", "978-0435905408", "Heinemann");
+        fillBookTable("The Radiance of the King", "1954",
+                "A philosophical novel exploring race and identity in colonial Africa.",
+                "Camara Laye", "1928", "978-1590171349", "NYRB Classics");
+        fillBookTable("The Famished Road", "1991", "A magical realism novel about a spirit child in Nigeria.",
+                "Ben Okri", "1959", "978-0385425131", "Jonathan Cape");
+        fillBookTable("Woman at Point Zero", "1975", "A feminist novel exploring oppression and resilience.",
+                "Nawal El Saadawi", "1931", "978-1783605941", "Zed Books");
+        fillBookTable("Ancestral Sacrifice", "1971", "A Ghanaian play about tradition and modernity.",
+                "Joe de Graft", "1924", "978-9964971698", "Longman");
+        fillBookTable("The Healers", "1979", "A historical novel about resistance to colonialism in Ghana.",
+                "Ayi Kwei Armah", "1939", "978-0435902810", "Heinemann");
+        fillBookTable("Bound to Violence", "1968", "A novel critiquing power structures in postcolonial Africa.",
+                "Yambo Ouologuem", "1940", "978-0435901318", "Heinemann");
+        fillBookTable("Waiting for an Angel", "2002",
+                "A novel about political oppression in Nigeria under military rule.",
+                "Helon Habila", "1967", "978-0393325111", "W.W. Norton & Company");
+
+        System.out.println("The 10 books where added successfully.");
+
     }
 
-
+    public static void fillBookTable(String title, String firstEditionYear, String description, String author,
+            String authorBirthYear, String isbn, String editor) throws ClassNotFoundException, SQLException {
+        BookDb.AddBook(title, firstEditionYear, description);
+        BookDb.AddAuthor(author, authorBirthYear);
+        BookDb.AddBookCopy(isbn, title, firstEditionYear, editor);
+    }
 
     public static void createTables(String DbName, String password) {
         try {
