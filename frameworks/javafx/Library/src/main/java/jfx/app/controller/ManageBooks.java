@@ -122,10 +122,8 @@ public class ManageBooks {
         try {
             if (!Objects.equals(this.bookToAddAuthor.getText(), "")
                     && !Objects.equals(this.bookToAddBirthYear.getText(), "")) {
-                if (!BookDb.checkAuthorExistence(this.bookToAddAuthor.getText(),
-                        Integer.valueOf(this.bookToAddBirthYear.getText()))) {
-                    BookDb.AddAuthor(this.bookToAddAuthor.getText(),
-                            Integer.valueOf(this.bookToAddBirthYear.getText()));
+                if (!BookDb.checkAuthorExistence(this.bookToAddAuthor.getText(), this.bookToAddBirthYear.getText())) {
+                    BookDb.AddAuthor(this.bookToAddAuthor.getText(), this.bookToAddBirthYear.getText());
                     this.resultArea.setText("The author have been successfully added in the database!");
                 }
             } else {
@@ -144,17 +142,15 @@ public class ManageBooks {
                     && !Objects.equals(this.bookToAddBirthYear.getText(), "")
                     && !Objects.equals(this.bookToAddTitle.getText(), "")
                     && !Objects.equals(this.bookToAddFirstEdition.getText(), "")) {
-                int id = BookDb.getAuthorId(this.bookToAddAuthor.getText(),
-                        Integer.valueOf(this.bookToAddBirthYear.getText()));
+                int id = BookDb.getAuthorId(this.bookToAddAuthor.getText(), this.bookToAddBirthYear.getText());
 
                 if (!BookDb.checkHasWrittenExistence(this.bookToAddTitle.getText(),
-                        Integer.valueOf(this.bookToAddFirstEdition.getText()), id)
+                        this.bookToAddFirstEdition.getText(), id)
                         && BookDb.checkAuthorExistence(this.bookToAddAuthor.getText(),
-                                Integer.valueOf(this.bookToAddBirthYear.getText()))
+                                this.bookToAddBirthYear.getText())
                         && BookDb.checkBookExistence(this.bookToAddTitle.getText(),
                                 this.bookToAddFirstEdition.getText())) {
-                    BookDb.updateHasWritten(this.bookToAddTitle.getText(),
-                            Integer.valueOf(this.bookToAddFirstEdition.getText()), id);
+                    BookDb.updateHasWritten(this.bookToAddTitle.getText(), this.bookToAddFirstEdition.getText(), id);
                 }
             }
         } catch (Exception e) {
@@ -180,7 +176,7 @@ public class ManageBooks {
             if (BookDb.checkEditorExistence(this.bookToAddEditorISBN.getText())
                     && BookDb.checkBookExistence(this.bookToAddTitle.getText(), this.bookToAddFirstEdition.getText())) {
                 BookDb.AddBookCopy(this.bookToAddId.getText(), this.bookToAddTitle.getText(),
-                        Integer.valueOf(this.bookToAddFirstEdition.getText()), this.bookToAddEditorISBN.getText());
+                        this.bookToAddFirstEdition.getText(), this.bookToAddEditorISBN.getText());
             }
         }
 

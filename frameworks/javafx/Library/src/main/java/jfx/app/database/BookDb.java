@@ -13,7 +13,7 @@ import jfx.app.model.UserCategory;
 public class BookDb {
 
     // Add a new book
-    public static boolean checkAuthorExistence(String AuthorName, Integer AuthorBirthDate)
+    public static boolean checkAuthorExistence(String AuthorName, String AuthorBirthDate)
             throws SQLException, ClassNotFoundException {
         ResultSet rs = DbUtils.dbExecuteQuery(" SELECT COUNT(1) FROM Author WHERE AuthorName = '" + AuthorName
                 + "' AND BirthDate = " + AuthorBirthDate + "");
@@ -23,13 +23,13 @@ public class BookDb {
         return false;
     }
 
-    public static void AddAuthor(String Name, Integer BirthYear) throws SQLException, ClassNotFoundException {
+    public static void AddAuthor(String Name, String BirthYear) throws SQLException, ClassNotFoundException {
         DbUtils.dbExecuteUpdate("""
                 INSERT INTO Author (AuthorName, Birthdate)
                 VALUES ('""" + Name + "'," + BirthYear + ");");
     }
 
-    public static int getAuthorId(String Name, Integer BirthYear) throws SQLException, ClassNotFoundException {
+    public static int getAuthorId(String Name, String BirthYear) throws SQLException, ClassNotFoundException {
         ResultSet rs = DbUtils
                 .dbExecuteQuery("SELECT Id FROM Author WHERE AuthorName = '" + Name + "' AND BirthDate = " + BirthYear);
         int id = 0;
@@ -72,7 +72,7 @@ public class BookDb {
                 VALUES ('""" + EditorName + "','" + EditorISBN + "');");
     }
 
-    public static boolean checkHasWrittenExistence(String BookTitle, Integer BookFirstYearEdition, int AuthorId)
+    public static boolean checkHasWrittenExistence(String BookTitle, String BookFirstYearEdition, int AuthorId)
             throws SQLException, ClassNotFoundException {
         ResultSet rs = DbUtils.dbExecuteQuery("""
                 SELECT COUNT(1) FROM HasWritten
@@ -84,14 +84,14 @@ public class BookDb {
         return false;
     }
 
-    public static void updateHasWritten(String BookTitle, Integer BookFirstYearEdition, int AuthorId)
+    public static void updateHasWritten(String BookTitle, String BookFirstYearEdition, int AuthorId)
             throws SQLException, ClassNotFoundException {
         DbUtils.dbExecuteUpdate("""
                 INSERT INTO HasWritten (BookTitle, BookFirstYearEdition, AuthorId)
                 VALUES ('""" + BookTitle + "'," + BookFirstYearEdition + "," + AuthorId + ")");
     }
 
-    public static void AddBookCopy(String CopyId, String BookTitle, Integer BookFirstYearEdition, String EditorISBN)
+    public static void AddBookCopy(String CopyId, String BookTitle, String BookFirstYearEdition, String EditorISBN)
             throws SQLException, ClassNotFoundException {
         DbUtils.dbExecuteUpdate("""
                 INSERT INTO Item (CopyId, BookTitle, BookFirstYearEdition, EditorISBN)
