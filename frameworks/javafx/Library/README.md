@@ -1,14 +1,13 @@
-# **JavaFX Library Management Application**  
+# **JavaFX Library Management Application**
 
-This project is a **JavaFX-based** application designed to manage a library system. It showcases essential JavaFX concepts such as **stages, scenes, and data handling**, while integrating **Maven, MySQL, and CSS** for a richer user experience.  
+This project is a **JavaFX-based** application designed to manage a library system. It demonstrates key JavaFX concepts such as **stages, scenes, and data handling**. Additionally, the project incorporates several other computer science areas, including:
 
-## **Overview**  
+- Project development using **Maven**
+- Database management with **MySQL** for data persistence.
+- GUI customization with **CSS**
 
-This application demonstrates how to build a **desktop-based** library management system using JavaFX. It includes:
+The goal of this project is to showcase various features of **JavaFX** for efficient code reuse.
 
-- **User interface development** with JavaFX and Scene Builder  
-- **User interaction handling**  
-- **Data persistence** via a **MySQL database**  
 
 ## **Features**  
 
@@ -25,8 +24,6 @@ This application demonstrates how to build a **desktop-based** library managemen
 - **CSS Styling** – Enhances UI appearance  
 - **MySQL Database** – Uses `java.sql` for database connectivity and CRUD operations  
 - **Stage Communication** – Implements a **gateway pattern** for inter-stage communication  
-
----
 
 ## **How to Use?**  
 
@@ -56,8 +53,6 @@ java --module-path "javafx-sdk-<version>/lib" \
 
 - Replace `<version>` with the actual **JavaFX SDK** and **Library version** you are using.  
 - Ensure that the **JavaFX SDK** is properly installed and the module path is correctly set.  
-
----
 
 ## **References**  
 
