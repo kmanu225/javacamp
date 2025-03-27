@@ -6,17 +6,17 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import static jfx.app.model.DbUtils.dbExecuteQuery;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import static jfx.app.database.DbUtils.dbExecuteQuery;
+import static jfx.app.database.DbUtils.dbExecuteUpdate;
 
 public class UserDb {
     public static void AddUser(String login, String lastName, String firstName, String emailAddress, String password,
             String category) throws SQLException, ClassNotFoundException, NoSuchAlgorithmException {
         Integer maxBooks = new UserCategory().getMaxBooks(category);
         Integer maxDays = new UserCategory().getMaxDays(category);
-        DbUtils.dbExecuteUpdate("""
+        dbExecuteUpdate("""
                 INSERT INTO User (Login, LastName, FirstName, EmailAddress, HashedPassword, Category, maxBooks, maxDays)
                 VALUES ('""" + login + "','" + lastName + "','" + firstName + "','" + emailAddress + "','"
                 + Password.sha256(password) + "','" + category + "'," + maxBooks + "," + maxDays + ")");
@@ -26,14 +26,14 @@ public class UserDb {
             throws SQLException, ClassNotFoundException {
         Integer maxBooks = new UserCategory().getMaxBooks(category);
         Integer maxDays = new UserCategory().getMaxDays(category);
-        DbUtils.dbExecuteUpdate("""
+        dbExecuteUpdate("""
                 UPDATE User
                 SET Category ='""" + category + "', maxBooks = " + maxBooks + ", maxDays = " + maxDays + "\n" +
                 "WHERE Login= '" + userLogin + "'");
 
         LocalDate date = LocalDate.now();
 
-        DbUtils.dbExecuteUpdate("""
+        dbExecuteUpdate("""
                 INSERT INTO changeCategory (UserLogin, ManagerLogin, Date, NewCategory)
                 VALUES ('""" + userLogin + "','" + managerLogin + "','" + date + "','" + category + "')");
     }
@@ -108,15 +108,15 @@ public class UserDb {
     }
 
     public static void deleteUser(String login) throws SQLException, ClassNotFoundException {
-        DbUtils.dbExecuteUpdate("DELETE FROM User WHERE Login='" + login + "';");
+        dbExecuteUpdate("DELETE FROM User WHERE Login='" + login + "';");
     }
 
     public static boolean checkExistence(String login, String name, String surname, String email)
             throws SQLException, ClassNotFoundException {
-        ResultSet rs1 = DbUtils.dbExecuteQuery(" SELECT COUNT(1) FROM User WHERE Login = '" + login + "'");
-        ResultSet rs2 = DbUtils.dbExecuteQuery(" SELECT COUNT(1) FROM User WHERE FirstName = '" + name + "'");
-        ResultSet rs3 = DbUtils.dbExecuteQuery(" SELECT COUNT(1) FROM User WHERE LastName = '" + surname + "'");
-        ResultSet rs4 = DbUtils.dbExecuteQuery(" SELECT COUNT(1) FROM User WHERE EmailAddress = '" + email + "'");
+        ResultSet rs1 = dbExecuteQuery(" SELECT COUNT(1) FROM User WHERE Login = '" + login + "'");
+        ResultSet rs2 = dbExecuteQuery(" SELECT COUNT(1) FROM User WHERE FirstName = '" + name + "'");
+        ResultSet rs3 = dbExecuteQuery(" SELECT COUNT(1) FROM User WHERE LastName = '" + surname + "'");
+        ResultSet rs4 = dbExecuteQuery(" SELECT COUNT(1) FROM User WHERE EmailAddress = '" + email + "'");
         if (rs1.next() && !Objects.equals(login, "")) {
             // System.out.println(rs1.getString(1));
             return (rs1.getInt(1) == 1);
@@ -138,7 +138,7 @@ public class UserDb {
     }
 
     public static boolean checkExistence(String login) throws SQLException, ClassNotFoundException {
-        ResultSet rs1 = DbUtils.dbExecuteQuery(" SELECT COUNT(1) FROM User WHERE Login = '" + login + "'");
+        ResultSet rs1 = dbExecuteQuery(" SELECT COUNT(1) FROM User WHERE Login = '" + login + "'");
         if (rs1.next()) {
             return (rs1.getInt(1) == 1);
         }

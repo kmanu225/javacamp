@@ -17,11 +17,11 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" stylesheets="@UserDashboard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jfx.app.controller.UserDashboard">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" stylesheets="@../css/UserDashboard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jfx.app.controller.UserDashboard">
    <top>
       <HBox prefHeight="43.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #6e0b14;" BorderPane.alignment="CENTER">
          <ImageView fitHeight="43.0" fitWidth="66.0">
-            <Image url="@zlogo-b.png" />
+            <Image url="@../images/logo-b.png" />
          </ImageView>
          <JFXButton onAction="#goToUserDashboard" prefHeight="43.0" prefWidth="209.0" text="My dashboard" textFill="WHITE">
             <graphic>
@@ -45,7 +45,7 @@
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>
-               <Image url="@zwelcome-books.jpg" />
+               <Image url="@../images/welcome-books.jpg" />
             </ImageView>
          </HBox>
          <VBox prefHeight="101.0" prefWidth="614.0" spacing="5.0" style="-fx-border-color: #6e0b14;">
@@ -110,7 +110,7 @@
                      </VBox>
                      <ImageView fitHeight="80.0" fitWidth="149.0">
                         <image>
-                           <Image url="@zbooks.jpg" />
+                           <Image url="@books.jpg" />
                         </image>
                      </ImageView>
                   </children>

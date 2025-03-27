@@ -17,11 +17,11 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: white;" stylesheets="@ManageUsers.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jfx.app.controller.ManageUsers">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: white;" stylesheets="@../css/ManageUsers.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jfx.app.controller.ManageUsers">
    <HBox prefHeight="57.0" prefWidth="800.0" spacing="20.0" style="-fx-background-color: #6e0b14;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <ImageView fitHeight="56.0" fitWidth="89.0">
          <image>
-            <Image url="@zlogo-b.png" />
+            <Image url="@../images/logo-b.png" />
          </image>
       </ImageView>
       <JFXButton onAction="#goToAdminDashboard" prefHeight="43.0" prefWidth="173.0" text="My dashboard" textFill="WHITE">
@@ -134,7 +134,7 @@
    <Separator layoutX="213.0" layoutY="108.0" orientation="VERTICAL" prefHeight="422.0" prefWidth="11.0" />
    <VBox alignment="CENTER" layoutX="42.0" layoutY="576.0" prefHeight="265.0" prefWidth="720.0" spacing="10.0" style="-fx-border-color: #6e0b14;" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="38.0">
       <ImageView fitHeight="57.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-         <Image url="@zadd.png" />
+         <Image url="@../images/add.png" />
       </ImageView>
       <HBox prefHeight="93.0" prefWidth="669.0" spacing="5.0" style="-fx-border-color: grey;">
          <padding>

@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class Launch extends Application {
 
-    static final String BASE_PATH = "/jfx/app/view/";
+    static final String BASE_PATH = "/jfx/app/view/html/";
 
     public static URL getResourceOrNull(String name) {
         return Launch.class.getResource(BASE_PATH + name);
@@ -27,7 +27,7 @@ public class Launch extends Application {
         scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull("LoginPage.css")));
 
         stage.getIcons()
-                .add(new Image(Objects.requireNonNull(Launch.class.getResourceAsStream(BASE_PATH + "zlogo-b.png"))));
+                .add(new Image(Objects.requireNonNull(Launch.class.getResourceAsStream("/jfx/app/view/images/logo-b.png"))));
         stage.setTitle("LoginPage");
         stage.setScene(scene);
         stage.show();

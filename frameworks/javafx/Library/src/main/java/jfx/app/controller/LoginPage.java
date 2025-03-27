@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import jfx.app.Launch;
-import jfx.app.model.DbUtils;
+import jfx.app.database.DbUtils;
 import jfx.app.model.Password;
 import jfx.app.model.User;
 import jfx.app.model.UserDb;

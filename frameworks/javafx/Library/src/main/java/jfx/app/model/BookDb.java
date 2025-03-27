@@ -1,5 +1,4 @@
 package jfx.app.model;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -7,6 +6,7 @@ import java.util.Objects;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import jfx.app.database.DbUtils;
 
 public class BookDb {
 
