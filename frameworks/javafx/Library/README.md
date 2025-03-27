@@ -1,20 +1,6 @@
 # **JavaFX Library Management Application**
 
-This project is a **JavaFX-based** application designed to manage a library system. It demonstrates key JavaFX concepts such as **stages, scenes, and data handling**. Additionally, the project incorporates several other computer science areas, including:
-
-- Project development using **Maven**
-- Database management with **MySQL** for data persistence.
-- GUI customization with **CSS**
-
-The goal of this project is to showcase various features of **JavaFX** for efficient code reuse.
-
-
-## **Features**  
-
-- **User Accounts** – Create and manage user profiles  
-- **Book Management** – Store, search, and manage books in a MySQL database  
-- **User Roles** – Define different access levels, including administrator privileges  
-- **Multi-Stage Workflow** – Separate windows for login, book management, and user administration  
+This project is a **JavaFX-based** application designed to manage a library system. It demonstrates key JavaFX concepts such as **stages, scenes, and data handling**. The goal of this project is to showcase various features of **JavaFX** for efficient code reuse.
 
 ## **Technical Aspects**  
 
@@ -23,7 +9,15 @@ The goal of this project is to showcase various features of **JavaFX** for effic
 - **Scene Builder** – GUI designing tool (FXML generation)  
 - **CSS Styling** – Enhances UI appearance  
 - **MySQL Database** – Uses `java.sql` for database connectivity and CRUD operations  
-- **Stage Communication** – Implements a **gateway pattern** for inter-stage communication  
+- **Stage Communication** – Implements a **gateway pattern** for inter-stage communication 
+
+## **Features**  
+
+- **User Accounts** – Create and manage user profiles  
+- **Book Management** – Store, search, and manage books in a MySQL database  
+- **User Roles** – Define different access levels, including administrator privileges  
+- **Multi-Stage Workflow** – Separate windows for login, book management, and user administration  
+
 
 ## **How to Use?**  
 
