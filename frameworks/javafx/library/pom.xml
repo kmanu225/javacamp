@@ -1,57 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.library</groupId>
-    <artifactId>library</artifactId>
+    
+    <groupId>jfx.app</groupId>
+    <artifactId>Library</artifactId>
     <version>1.0</version>
-    <name>library</name>
-
+    
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.8.2</junit.version>
     </properties>
-
+    
     <dependencies>
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>8.2.0</version>
+            <version>9.1.0</version>
         </dependency>
-
+        
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>23</version>
         </dependency>
-
+        
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>23</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
+        
+        <!-- JFoenix UI library -->
         <dependency>
             <groupId>com.jfoenix</groupId>
             <artifactId>jfoenix</artifactId>
             <version>9.0.10</version>
         </dependency>
-
+        
+        <!-- JUnit dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- JetBrains Annotations -->
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
@@ -59,19 +62,18 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
+    
     <build>
-
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <mainClass>your.package.Main</mainClass>
+                    <mainClass>jfx.app.Launch</mainClass>
                 </configuration>
             </plugin>
-
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -81,6 +83,7 @@
                     <target>23</target>
                 </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
@@ -89,13 +92,28 @@
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>
-                                com.library.controller.App
-                            </mainClass>
+                            <mainClass>jfx.app.Launch</mainClass>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+            
+            <!-- Build an executable JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>jfx.app.Launch</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+    
 </project>
