@@ -1,4 +1,4 @@
-package jfx.app.model;
+package jfx.app.database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -6,7 +6,9 @@ import java.util.Objects;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import jfx.app.database.DbUtils;
+import jfx.app.model.BookCopy;
+import jfx.app.model.HasBorrowed;
+import jfx.app.model.UserCategory;
 
 public class BookDb {
 
@@ -141,16 +143,16 @@ public class BookDb {
     }
 
     private static BookCopy Observe0(ResultSet rs) throws SQLException {
-        BookCopy bookCopy = new BookCopy();
+        BookCopy BookCopy = new BookCopy();
         while (rs.next()) {
-            bookCopy.setBookTitle(rs.getString("BookTitle"));
-            bookCopy.setAuthorName(rs.getString("AuthorName"));
-            bookCopy.setEditorName(rs.getString("EditorName"));
-            bookCopy.setDescription(rs.getString("Description"));
-            bookCopy.setCopyId(rs.getInt("CopyId"));
+            BookCopy.setBookTitle(rs.getString("BookTitle"));
+            BookCopy.setAuthorName(rs.getString("AuthorName"));
+            BookCopy.setEditorName(rs.getString("EditorName"));
+            BookCopy.setDescription(rs.getString("Description"));
+            BookCopy.setCopyId(rs.getInt("CopyId"));
 
         }
-        return bookCopy;
+        return BookCopy;
     }
 
     public static boolean checkBookExistence(String bookTitle, String bookAuthor, String bookEditor)
@@ -234,15 +236,15 @@ public class BookDb {
     }
 
     private static BookCopy Observe1(ResultSet rs) throws SQLException {
-        BookCopy bookCopy = new BookCopy();
+        BookCopy BookCopy = new BookCopy();
         while (rs.next()) {
-            bookCopy.setBookTitle(rs.getString("BookTitle"));
-            bookCopy.setAuthorName(rs.getString("AuthorName"));
-            bookCopy.setEditorName(rs.getString("EditorName"));
-            bookCopy.setDescription(rs.getString("Description"));
+            BookCopy.setBookTitle(rs.getString("BookTitle"));
+            BookCopy.setAuthorName(rs.getString("AuthorName"));
+            BookCopy.setEditorName(rs.getString("EditorName"));
+            BookCopy.setDescription(rs.getString("Description"));
 
         }
-        return bookCopy;
+        return BookCopy;
     }
 
     // Check available book
@@ -264,13 +266,13 @@ public class BookDb {
         bookCopies = FXCollections.observableArrayList();
 
         while (rs.next()) {
-            BookCopy bookCopy = new BookCopy();
-            bookCopy.setBookTitle(rs.getString("BookTitle"));
-            bookCopy.setAuthorName(rs.getString("AuthorName"));
-            bookCopy.setEditorName(rs.getString("EditorName"));
-            bookCopy.setDescription(rs.getString("Description"));
-            bookCopy.setCopyId(rs.getInt("CopyId"));
-            bookCopies.add(bookCopy);
+            BookCopy BookCopy = new BookCopy();
+            BookCopy.setBookTitle(rs.getString("BookTitle"));
+            BookCopy.setAuthorName(rs.getString("AuthorName"));
+            BookCopy.setEditorName(rs.getString("EditorName"));
+            BookCopy.setDescription(rs.getString("Description"));
+            BookCopy.setCopyId(rs.getInt("CopyId"));
+            bookCopies.add(BookCopy);
         }
         return bookCopies;
     }
@@ -293,12 +295,12 @@ public class BookDb {
         bookCopies = FXCollections.observableArrayList();
 
         while (rs.next()) {
-            BookCopy bookCopy = new BookCopy();
-            bookCopy.setBookTitle(rs.getString("BookTitle"));
-            bookCopy.setAuthorName(rs.getString("AuthorName"));
-            bookCopy.setEditorName(rs.getString("EditorName"));
-            bookCopy.setDescription(rs.getString("Description"));
-            bookCopies.add(bookCopy);
+            BookCopy BookCopy = new BookCopy();
+            BookCopy.setBookTitle(rs.getString("BookTitle"));
+            BookCopy.setAuthorName(rs.getString("AuthorName"));
+            BookCopy.setEditorName(rs.getString("EditorName"));
+            BookCopy.setDescription(rs.getString("Description"));
+            bookCopies.add(BookCopy);
         }
         return bookCopies;
     }

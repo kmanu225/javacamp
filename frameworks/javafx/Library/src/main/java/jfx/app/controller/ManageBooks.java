@@ -14,8 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import jfx.app.Launch;
-import jfx.app.model.BookDb;
-import jfx.app.model.UserDb;
+import jfx.app.database.BookDb;
+import jfx.app.database.UserDb;
 
 public class ManageBooks {
 

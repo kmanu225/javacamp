@@ -20,7 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import jfx.app.Launch;
 import jfx.app.model.BookCopy;
-import jfx.app.model.BookDb;
+import jfx.app.database.BookDb;
 import jfx.app.model.HasBorrowed;
 
 public class AdminDashboard {
@@ -61,7 +61,7 @@ public class AdminDashboard {
         TableBookDescription.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
         TableBookIdAvailable.setCellValueFactory(cellData -> cellData.getValue().copyIdProperty().asObject());
 
-        LoanTableBookId.setCellValueFactory(cellData -> cellData.getValue().bookCopyIdProperty().asObject());
+        LoanTableBookId.setCellValueFactory(cellData -> cellData.getValue().BookCopyIdProperty().asObject());
         LoanTableBookTitle.setCellValueFactory(cellData -> cellData.getValue().bookTitleProperty());
         LoanTableUserEmail.setCellValueFactory(cellData -> cellData.getValue().userEmailProperty());
         LoanTableLastName.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());

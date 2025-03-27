@@ -1,4 +1,4 @@
-package jfx.app.model;
+package jfx.app.database;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
@@ -10,6 +10,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import static jfx.app.database.DbUtils.dbExecuteQuery;
 import static jfx.app.database.DbUtils.dbExecuteUpdate;
+import jfx.app.model.UserCategory;
+import jfx.app.model.Password;
+import jfx.app.model.User;
+
+
 
 public class UserDb {
     public static void AddUser(String login, String lastName, String firstName, String emailAddress, String password,

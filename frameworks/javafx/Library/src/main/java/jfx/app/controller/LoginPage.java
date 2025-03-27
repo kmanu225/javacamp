@@ -18,7 +18,7 @@ import jfx.app.Launch;
 import jfx.app.database.DbUtils;
 import jfx.app.model.Password;
 import jfx.app.model.User;
-import jfx.app.model.UserDb;
+import jfx.app.database.UserDb;
 
 public class LoginPage {
 
