@@ -87,7 +87,7 @@ public class ManageBooks {
         if (!Objects.equals(bookToLendId.getText(), "") && !Objects.equals(bookToLendBorrowerLogin.getText(), "")) {
             if (BookDb.checkBookCopyExistence(Integer.valueOf(bookToLendId.getText()))) {
                 if (BookDb.checkForLend(Integer.valueOf(bookToLendId.getText()))) {
-                    if (UserDb.checkExistence(bookToLendBorrowerLogin.getText())) {
+                    if (UserDb.checkUserExistence(bookToLendBorrowerLogin.getText())) {
                         BookDb.updateBorrowedBooks(Integer.valueOf(bookToLendId.getText()),
                                 bookToLendBorrowerLogin.getText());
                         this.resultArea1.setText("Operation succeeded!");
@@ -175,7 +175,7 @@ public class ManageBooks {
                 && !Objects.equals(this.bookToAddFirstEdition.getText(), "")) {
             if (BookDb.checkEditorExistence(this.bookToAddEditorISBN.getText())
                     && BookDb.checkBookExistence(this.bookToAddTitle.getText(), this.bookToAddFirstEdition.getText())) {
-                BookDb.AddBookCopy(this.bookToAddId.getText(), this.bookToAddTitle.getText(),
+                BookDb.AddBookCopy(Integer.valueOf(this.bookToAddId.getText()), this.bookToAddTitle.getText(),
                         this.bookToAddFirstEdition.getText(), this.bookToAddEditorISBN.getText());
             }
         }
@@ -209,7 +209,7 @@ public class ManageBooks {
         if (!Objects.equals(bookToReturnId.getText(), "") && !Objects.equals(bookToReturnBorrowerLogin.getText(), "")
                 && !Objects.equals(GiveBackDate.getText(), "")) {
             if (BookDb.checkBookCopyExistence(Integer.valueOf(bookToReturnId.getText()))) {
-                if (UserDb.checkExistence(bookToReturnBorrowerLogin.getText())) {
+                if (UserDb.checkUserExistence(bookToReturnBorrowerLogin.getText())) {
                     BookDb.updateReturnDate(Integer.valueOf(bookToReturnId.getText()),
                             bookToReturnBorrowerLogin.getText(), LocalDate.parse(GiveBackDate.getText()));
                     this.resultArea2.setText("Operation succeeded!");

@@ -134,7 +134,7 @@ public class ManageUsers {
         if (!Objects.equals(this.loginText.getText(), "") || !Objects.equals(this.nameText.getText(), "")
                 || !Objects.equals(this.surnameText.getText(), "") || !Objects.equals(this.emailText.getText(), "")) {
 
-            if (UserDb.checkExistence(this.loginText.getText(), this.nameText.getText(), this.surnameText.getText(),
+            if (UserDb.checkUserExistence(this.loginText.getText(), this.nameText.getText(), this.surnameText.getText(),
                     this.emailText.getText())) {
                 ObservableList<User> users = FXCollections.observableArrayList();
                 users.add(UserDb.searchUser(this.loginText.getText(), this.nameText.getText(),
@@ -180,7 +180,7 @@ public class ManageUsers {
                 && !Objects.equals(this.NewUserEmail.getText(), "")
                 && !Objects.equals(this.NewUserPassword.getText(), "")
                 && !Objects.equals(this.NewUserCategory.getText(), "")) {
-            boolean presentLogin = UserDb.checkExistence(this.NewUserLogin.getText());
+            boolean presentLogin = UserDb.checkUserExistence(this.NewUserLogin.getText());
 
             if (!presentLogin) {
                 UserDb.AddUser(this.NewUserLogin.getText(), this.NewUserName.getText(), this.NewUserSurname.getText(),
@@ -224,7 +224,7 @@ public class ManageUsers {
     public void deleteUser(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         resultArea.clear();
         if (!Objects.equals(this.loginText.getText(), "")) {
-            if (UserDb.checkExistence(this.loginText.getText())) {
+            if (UserDb.checkUserExistence(this.loginText.getText())) {
                 UserDb.deleteUser(this.loginText.getText());
             } else {
                 this.resultArea.setText("The user you look for is not in our data base");
