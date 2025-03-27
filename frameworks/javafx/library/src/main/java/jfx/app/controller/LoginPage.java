@@ -1,11 +1,6 @@
-package com.library.controller;
+package jfx.app.controller;
 
 import java.util.Objects;
-
-import com.library.model.DbUtils;
-import com.library.model.Password;
-import com.library.model.User;
-import com.library.model.UserDb;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -19,6 +14,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import jfx.app.Launch;
+import jfx.app.model.DbUtils;
+import jfx.app.model.Password;
+import jfx.app.model.User;
+import jfx.app.model.UserDb;
 
 public class LoginPage {
 
@@ -86,9 +86,9 @@ public class LoginPage {
                 gateway.setUser(UserDb.searchUser(login.getText()));
 
                 if (!checkManager.isSelected()) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("UserDashboard.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("UserDashboard.fxml"));
                     Scene scene = new Scene(fxmlLoader.load());
-                    scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("UserDashboard.css"))));
+                    scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("UserDashboard.css"))));
 
                     stage.setUserData(gateway);
                     stage.setTitle("UserPage");
@@ -96,9 +96,9 @@ public class LoginPage {
                     stage.show();
 
                 } else {
-                    FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminDashboard.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("AdminDashboard.fxml"));
                     Scene scene = new Scene(fxmlLoader.load());
-                    scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("AdminDashboard.css"))));
+                    scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("AdminDashboard.css"))));
 
                     stage.setUserData(gateway);
                     stage.setTitle("AdminPage");

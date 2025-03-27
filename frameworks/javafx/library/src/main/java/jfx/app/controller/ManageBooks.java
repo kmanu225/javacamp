@@ -1,12 +1,9 @@
-package com.library.controller;
+package jfx.app.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Objects;
-
-import com.library.model.BookDb;
-import com.library.model.UserDb;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -16,6 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import jfx.app.Launch;
+import jfx.app.model.BookDb;
+import jfx.app.model.UserDb;
 
 public class ManageBooks {
 
@@ -38,7 +38,7 @@ public class ManageBooks {
     public TextField GiveBackDate;
 
     public void goToAdminDashboard(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminDashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("AdminDashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -49,11 +49,11 @@ public class ManageBooks {
     }
 
     public void goToUsersPage(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageUsers.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("ManageUsers.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageUsers.css"))));
+        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("ManageUsers.css"))));
         stage.setTitle("UsersInformation");
         stage.setScene(scene);
         stage.show();
@@ -61,11 +61,11 @@ public class ManageBooks {
     }
 
     public void goToBooksPage(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageBooks.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("ManageBooks.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageBooks.css"))));
+        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("ManageBooks.css"))));
         stage.setTitle("BooksInformationPage");
         stage.setScene(scene);
         stage.show();
@@ -73,7 +73,7 @@ public class ManageBooks {
     }
 
     public void LogOut(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("LoginPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("LoginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

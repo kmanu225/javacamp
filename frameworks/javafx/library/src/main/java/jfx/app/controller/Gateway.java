@@ -1,6 +1,6 @@
-package com.library.controller;
+package jfx.app.controller;
 
-import com.library.model.User;
+import jfx.app.model.User;
 
 public class Gateway {
 

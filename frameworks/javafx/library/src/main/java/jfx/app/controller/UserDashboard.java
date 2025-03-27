@@ -1,12 +1,8 @@
-package com.library.controller;
+package jfx.app.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
-
-import com.library.model.BookCopy;
-import com.library.model.BookDb;
-import com.library.model.HasBorrowed;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +18,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import jfx.app.Launch;
+import jfx.app.model.BookCopy;
+import jfx.app.model.BookDb;
+import jfx.app.model.HasBorrowed;
 
 public class UserDashboard {
 
@@ -73,11 +73,11 @@ public class UserDashboard {
     }
 
     public void goToUserDashboard(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("UserDashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("UserDashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("UserDashboard.css"))));
+        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("UserDashboard.css"))));
         stage.setTitle("AdminPage");
         stage.setScene(scene);
         stage.show();
@@ -85,11 +85,11 @@ public class UserDashboard {
     }
 
     public void LogOut(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("LoginPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("LoginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("LoginPage.css"))));
+        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("LoginPage.css"))));
         stage.setTitle("LoginPage");
         stage.setScene(scene);
         stage.show();

@@ -1,4 +1,4 @@
-package com.library.model;
+package jfx.app.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;

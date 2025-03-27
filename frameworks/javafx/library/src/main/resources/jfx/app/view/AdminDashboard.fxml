@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: white;" stylesheets="@AdminDashboard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.library.controller.AdminDashboard">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: white;" stylesheets="@AdminDashboard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jfx.app.controller.AdminDashboard">
    <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
       <top>
          <HBox prefHeight="43.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #6e0b14;" BorderPane.alignment="CENTER">

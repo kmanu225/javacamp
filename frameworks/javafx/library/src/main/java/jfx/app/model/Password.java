@@ -1,4 +1,4 @@
-package com.library.model;
+package jfx.app.model;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

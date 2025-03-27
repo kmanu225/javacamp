@@ -1,14 +1,10 @@
-package com.library.controller;
+package jfx.app.controller;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Random;
-
-import com.library.model.Password;
-import com.library.model.User;
-import com.library.model.UserDb;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,6 +20,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import jfx.app.Launch;
+import jfx.app.model.Password;
+import jfx.app.model.User;
+import jfx.app.model.UserDb;
 
 public class ManageUsers {
 
@@ -87,9 +87,9 @@ public class ManageUsers {
         Gateway gateway = (Gateway) stage.getUserData();
         stage.setUserData(gateway);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("AdminDashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("AdminDashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("AdminDashboard.css"))));
+        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("AdminDashboard.css"))));
 
         stage.setTitle("AdminPage");
         stage.setScene(scene);
@@ -98,11 +98,11 @@ public class ManageUsers {
     }
 
     public void goToUsersPage(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageUsers.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("ManageUsers.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
 
-        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageUsers.css"))));
+        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("ManageUsers.css"))));
         stage.setTitle("UsersInformation");
         stage.setScene(scene);
         stage.show();
@@ -110,11 +110,11 @@ public class ManageUsers {
     }
 
     public void goToBooksPage(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("ManageBooks.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("ManageBooks.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene.getStylesheets().add(String.valueOf(App.getResourceOrNull(("ManageBooks.css"))));
+        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("ManageBooks.css"))));
         stage.setTitle("BooksInformationPage");
         stage.setScene(scene);
         stage.show();
@@ -122,7 +122,7 @@ public class ManageUsers {
     }
 
     public void LogOut(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.getResourceOrNull("LoginPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("LoginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

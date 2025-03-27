@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" stylesheets="@LoginPage.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.library.controller.LoginPage">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" stylesheets="@LoginPage.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jfx.app.controller.LoginPage">
    <center>
       <HBox alignment="TOP_CENTER" prefHeight="302.0" prefWidth="552.0" BorderPane.alignment="CENTER">
          <VBox fx:id="bigVbox" alignment="TOP_CENTER" prefHeight="648.0" prefWidth="859.0" spacing="5.0" style="-fx-background-color: white;">
