@@ -43,10 +43,6 @@ java --module-path "javafx-sdk-<version>/lib" \
 
 `javafx-sdk-<version>` can be downloaded from the project [Gluon](https://gluonhq.com/products/javafx/).
 
-**Note**:  
-
-- Replace `<version>` with the actual **JavaFX SDK** and **Library version** you are using.  
-- Ensure that the **JavaFX SDK** is properly installed and the module path is correctly set.  
 
 ## **References**  
 
