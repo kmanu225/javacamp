@@ -28,7 +28,7 @@
                <children>
                   <ImageView fitHeight="167.0" fitWidth="308.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/zlock.jpeg" />
+                        <Image url="@../images/lock.jpeg" />
                      </image>
                   </ImageView>
                   <HBox alignment="CENTER" prefHeight="73.0" prefWidth="498.0" spacing="200.0">
