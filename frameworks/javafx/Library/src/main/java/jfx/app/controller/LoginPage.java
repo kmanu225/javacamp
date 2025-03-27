@@ -88,7 +88,6 @@ public class LoginPage {
                 if (!checkManager.isSelected()) {
                     FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("UserDashboard.fxml"));
                     Scene scene = new Scene(fxmlLoader.load());
-                    scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("UserDashboard.css"))));
 
                     stage.setUserData(gateway);
                     stage.setTitle("UserPage");
@@ -98,7 +97,6 @@ public class LoginPage {
                 } else {
                     FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("AdminDashboard.fxml"));
                     Scene scene = new Scene(fxmlLoader.load());
-                    scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("AdminDashboard.css"))));
 
                     stage.setUserData(gateway);
                     stage.setTitle("AdminPage");

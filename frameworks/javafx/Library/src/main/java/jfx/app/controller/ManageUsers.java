@@ -89,7 +89,6 @@ public class ManageUsers {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("AdminDashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("AdminDashboard.css"))));
 
         stage.setTitle("AdminPage");
         stage.setScene(scene);
@@ -102,7 +101,6 @@ public class ManageUsers {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
 
-        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("ManageUsers.css"))));
         stage.setTitle("UsersInformation");
         stage.setScene(scene);
         stage.show();
@@ -114,7 +112,6 @@ public class ManageUsers {
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("ManageBooks.css"))));
         stage.setTitle("BooksInformationPage");
         stage.setScene(scene);
         stage.show();

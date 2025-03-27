@@ -77,7 +77,6 @@ public class UserDashboard {
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("UserDashboard.css"))));
         stage.setTitle("AdminPage");
         stage.setScene(scene);
         stage.show();
@@ -89,7 +88,6 @@ public class UserDashboard {
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("LoginPage.css"))));
         stage.setTitle("LoginPage");
         stage.setScene(scene);
         stage.show();

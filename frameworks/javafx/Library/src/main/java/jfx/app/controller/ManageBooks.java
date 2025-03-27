@@ -53,7 +53,6 @@ public class ManageBooks {
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("ManageUsers.css"))));
         stage.setTitle("UsersInformation");
         stage.setScene(scene);
         stage.show();
@@ -65,7 +64,6 @@ public class ManageBooks {
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull(("ManageBooks.css"))));
         stage.setTitle("BooksInformationPage");
         stage.setScene(scene);
         stage.show();

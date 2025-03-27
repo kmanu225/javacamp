@@ -24,7 +24,6 @@ public class Launch extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Launch.getResourceOrNull("LoginPage.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(String.valueOf(Launch.getResourceOrNull("LoginPage.css")));
 
         stage.getIcons()
                 .add(new Image(Objects.requireNonNull(Launch.class.getResourceAsStream("/jfx/app/view/images/logo-b.png"))));
