@@ -25,8 +25,8 @@ public class Launch extends Application {
 
         Scene scene = new Scene(fxmlLoader.load());
 
-        stage.getIcons()
-                .add(new Image(Objects.requireNonNull(Launch.class.getResourceAsStream("/jfx/app/view/images/logo-b.png"))));
+        stage.getIcons().add(
+                new Image(Objects.requireNonNull(Launch.class.getResourceAsStream("/jfx/app/view/images/logo-b.png"))));
         stage.setTitle("LoginPage");
         stage.setScene(scene);
         stage.show();

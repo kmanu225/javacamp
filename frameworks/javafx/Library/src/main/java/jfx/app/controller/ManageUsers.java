@@ -27,7 +27,7 @@ import jfx.app.database.UserDb;
 
 public class ManageUsers {
 
-    public TextField changeCategoryLogin;
+    public TextField UserCategoryLogin;
     public TextField newCategory;
     public Button searchUser;
     public Button updateUser;
@@ -211,9 +211,9 @@ public class ManageUsers {
         String myLogin = gateway.getUser().getLogin();
 
         resultArea.clear();
-        if (!Objects.equals(this.changeCategoryLogin.getText(), "")
+        if (!Objects.equals(this.UserCategoryLogin.getText(), "")
                 && !Objects.equals(this.newCategory.getText(), "")) {
-            UserDb.updateCategory(this.changeCategoryLogin.getText(), myLogin, this.newCategory.getText());
+            UserDb.updateCategory(this.UserCategoryLogin.getText(), myLogin, this.newCategory.getText());
             updateView();
             this.resultArea.setText("The user category has been updated.");
         } else {

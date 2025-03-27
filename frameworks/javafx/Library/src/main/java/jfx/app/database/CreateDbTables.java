@@ -77,6 +77,8 @@ public class CreateDbTables {
         BookDb.AddAuthor(author, authorBirthYear);
         BookDb.AddEditor(editor, isbn);
         BookDb.AddBookCopy(itemId, title, firstEditionYear, isbn);
+        int id = BookDb.getAuthorId(author, authorBirthYear);
+        BookDb.updateHasWritten(title, firstEditionYear, id);
     }
 
     public static void createTables(String DbName, String password) {
@@ -115,10 +117,10 @@ public class CreateDbTables {
                 System.out.println("Table HasWritten created successfully!");
 
                 Statement stmt5 = con.createStatement();
-                String sql5 = "CREATE TABLE IF NOT EXISTS  changeCategory (UserLogin VARCHAR(30), ManagerLogin VARCHAR(30), Date DATE, NewCategory CHAR(1), FOREIGN KEY (UserLogin) REFERENCES User (Login), FOREIGN KEY (ManagerLogin) REFERENCES User (Login));";
+                String sql5 = "CREATE TABLE IF NOT EXISTS  UserCategory (UserLogin VARCHAR(30), ManagerLogin VARCHAR(30), Date DATE, NewCategory CHAR(1), FOREIGN KEY (UserLogin) REFERENCES User (Login), FOREIGN KEY (ManagerLogin) REFERENCES User (Login));";
                 stmt5.executeUpdate(sql5);
 
-                System.out.println("Table changeCategory successfully!");
+                System.out.println("Table UserCategory successfully!");
 
                 Statement stmt6 = con.createStatement();
                 String sql6 = "CREATE TABLE IF NOT EXISTS  Item (CopyId INT PRIMARY KEY, BookTitle VARCHAR(255), BookFirstYearEdition VARCHAR(10), EditorISBN VARCHAR(255), FOREIGN KEY (EditorISBN) REFERENCES Editor(ISBN), FOREIGN KEY (BookTitle, BookFirstYearEdition) REFERENCES Book (Title, FirstYearEdition));";

@@ -56,7 +56,7 @@ public class UserDb {
                 WHERE Login = ?""";
 
         String insertQuery = """
-                INSERT INTO changeCategory (UserLogin, ManagerLogin, Date, NewCategory)
+                INSERT INTO UserCategory (UserLogin, ManagerLogin, Date, NewCategory)
                 VALUES (?, ?, ?, ?)""";
 
         try (Connection conn = getConn(); // Use local function instead of Database.getConnection()
@@ -74,7 +74,7 @@ public class UserDb {
             pstmtUpdate.setString(4, userLogin);
             pstmtUpdate.executeUpdate();
 
-            // Insert the changeCategory record
+            // Insert the UserCategory record
             LocalDate date = LocalDate.now();
             pstmtInsert.setString(1, userLogin);
             pstmtInsert.setString(2, managerLogin);
@@ -247,12 +247,12 @@ public class UserDb {
 
     public static boolean checkUserExistence(String login) throws SQLException, ClassNotFoundException {
         String query = "SELECT COUNT(1) FROM User WHERE Login = ?";
-    
+
         try (Connection conn = getConn();
-             PreparedStatement pstmt = conn.prepareStatement(query)) {
-    
+                PreparedStatement pstmt = conn.prepareStatement(query)) {
+
             pstmt.setString(1, login);
-    
+
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     return rs.getInt(1) == 1;
@@ -261,7 +261,6 @@ public class UserDb {
         }
         return false;
     }
-    
 
     public static ObservableList<User> getBlackList() throws SQLException, ClassNotFoundException {
         String query = "SELECT * FROM User WHERE Category = ?";

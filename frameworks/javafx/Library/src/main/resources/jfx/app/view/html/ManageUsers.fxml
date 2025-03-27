@@ -81,7 +81,7 @@
          <VBox spacing="3.0">
             <children>
                <Label prefHeight="17.0" prefWidth="47.0" text="Login" />
-               <TextField fx:id="changeCategoryLogin" prefHeight="25.0" prefWidth="91.0" promptText="login" />
+               <TextField fx:id="UserCategoryLogin" prefHeight="25.0" prefWidth="91.0" promptText="login" />
                <Label text="New Category" />
                <TextField fx:id="newCategory" prefHeight="25.0" prefWidth="139.0" promptText="category" />
                <Button fx:id="updateUser" mnemonicParsing="false" onAction="#updateUserCategory" prefHeight="65.0" prefWidth="116.0" text="Update" />
