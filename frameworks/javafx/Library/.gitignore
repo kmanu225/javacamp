@@ -39,3 +39,7 @@ build/
 
 ### Personal ###
 todo.md
+
+### Idea ###
+.idea
+.gitignore
