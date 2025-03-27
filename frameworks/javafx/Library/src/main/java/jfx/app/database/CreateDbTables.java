@@ -1,23 +1,30 @@
 package jfx.app.database;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CreateDbTables {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchAlgorithmException, SQLException {
         String DbName = "libraryDb";
         String password = "ocS-+o{$W0";
         long start = System.currentTimeMillis();
         createDb("" + DbName, "" + password);
         createTables("" + DbName, "" + password);
+        System.out.println("The program takes " + (System.currentTimeMillis() - start) + "ms");
 
-        System.out.print("The program takes ");
-        System.out.print((System.currentTimeMillis() - start));
-        System.out.print("ms");
-
+        UserDb.AddUser("javafx", "javafx", "javafx", "javafx@java.oracle", "password", "M");
+        UserDb.AddUser("java_A", "java_A", "java_A", "java_A@java.oracle", "password", "A");
+        UserDb.AddUser("java_B", "java_B", "java_B", "java_B@java.oracle", "password", "B");
+        UserDb.AddUser("java_C", "java_C", "java_C", "java_C@java.oracle", "password", "C");
+        UserDb.AddUser("java_banned", "java_banned", "java_banned", "java_banned@java.oracle", "password", "S");
+        System.out.println("Users javafx, java_A, java_B, java_C, java_banned have been created successfully");
     }
+
+
 
     public static void createTables(String DbName, String password) {
         try {
