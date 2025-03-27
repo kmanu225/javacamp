@@ -25,26 +25,44 @@ public class CreateDbTables {
             UserDb.AddUser("java_banned", "java_banned", "java_banned", "java_banned@java.oracle", "password", "S");
             System.out.println("Users javafx, java_A, java_B, java_C, java_banned have been created successfully");
 
-            fillBookTable("Things Fall Apart", "1958", "A story of traditional Igbo society in the face of colonialism.", "Chinua Achebe", "1930", 1, "978-0385474542", "Heinemann");
+            fillBookTable("Things Fall Apart", "1958",
+                    "A story of traditional Igbo society in the face of colonialism.", "Chinua Achebe", "1930", 1,
+                    "978-0385474542", "Heinemann");
 
-            fillBookTable("The Beautiful Ones Are Not Yet Born", "1968", "A tale of post-colonial Ghana, grappling with corruption.", "Ayi Kwei Armah", "1939", 2, "978-0877287553", "Heinemann");
-            
-            fillBookTable("So Long a Letter", "1979", "A woman's reflections on marriage, friendship, and the changing roles of women.", "Mariama Bâ", "1929", 3, "978-0852553536", "Heinemann");
-            
-            fillBookTable("Season of Migration to the North", "1966", "A powerful tale about identity, colonialism, and post-colonial conflict.", "Tayeb Salih", "1929", 4, "978-0889224670", "Heinemann");
-            
-            fillBookTable("The Joys of Motherhood", "1979", "A novel about the pressures of motherhood and tradition in Nigeria.", "Buchi Emecheta", "1944", 5, "978-0141181844", "Heinemann");
-            
-            fillBookTable("No Sweetness Here", "1970", "A collection of short stories about the complexities of African life.", "Ama Ata Aidoo", "1940", 6, "978-0435904722", "Heinemann");
-            
-            fillBookTable("The Palm-Wine Drinkard", "1952", "A surreal narrative about the quest for a palm-wine tapper.", "Amos Tutuola", "1920", 7, "978-0435974722", "Heinemann");
-            
-            fillBookTable("God's Bits of Wood", "1960", "A powerful story of a workers' strike in colonial Senegal.", "Sembène Ousmane", "1923", 8, "978-0852554236", "Heinemann");
-            
-            fillBookTable("Petals of Blood", "1977", "A powerful novel about post-independence Kenya and its political struggles.", "Ngũgĩ wa Thiong'o", "1938", 9, "978-0852554809", "Heinemann");
-            
-            fillBookTable("The Fishermen", "2015", "A gripping novel about four brothers and the consequences of a prophecy.", "Chigozie Obioma", "1986", 10, "978-1328519356", "Little, Brown and Company");
-            
+            fillBookTable("The Beautiful Ones Are Not Yet Born", "1968",
+                    "A tale of post-colonial Ghana, grappling with corruption.", "Ayi Kwei Armah", "1939", 2,
+                    "978-0877287553", "Heinemann");
+
+            fillBookTable("So Long a Letter", "1979",
+                    "A woman's reflections on marriage, friendship, and the changing roles of women.", "Mariama Bâ",
+                    "1929", 3, "978-0852553536", "Heinemann");
+
+            fillBookTable("Season of Migration to the North", "1966",
+                    "A powerful tale about identity, colonialism, and post-colonial conflict.", "Tayeb Salih", "1929",
+                    4, "978-0889224670", "Heinemann");
+
+            fillBookTable("The Joys of Motherhood", "1979",
+                    "A novel about the pressures of motherhood and tradition in Nigeria.", "Buchi Emecheta", "1944", 5,
+                    "978-0141181844", "Heinemann");
+
+            fillBookTable("No Sweetness Here", "1970",
+                    "A collection of short stories about the complexities of African life.", "Ama Ata Aidoo", "1940", 6,
+                    "978-0435904722", "Heinemann");
+
+            fillBookTable("The Palm-Wine Drinkard", "1952",
+                    "A surreal narrative about the quest for a palm-wine tapper.", "Amos Tutuola", "1920", 7,
+                    "978-0435974722", "Heinemann");
+
+            fillBookTable("God's Bits of Wood", "1960", "A powerful story of a workers' strike in colonial Senegal.",
+                    "Sembène Ousmane", "1923", 8, "978-0852554236", "Heinemann");
+
+            fillBookTable("Petals of Blood", "1977",
+                    "A powerful novel about post-independence Kenya and its political struggles.", "Ngũgĩ wa Thiong'o",
+                    "1938", 9, "978-0852554809", "Heinemann");
+
+            fillBookTable("The Fishermen", "2015",
+                    "A gripping novel about four brothers and the consequences of a prophecy.", "Chigozie Obioma",
+                    "1986", 10, "978-1328519356", "Little, Brown and Company");
 
             System.out.println("The 10 books where added successfully.");
         } catch (ClassNotFoundException | NoSuchAlgorithmException | SQLException e) {
@@ -53,7 +71,8 @@ public class CreateDbTables {
     }
 
     public static void fillBookTable(String title, String firstEditionYear, String description, String author,
-            String authorBirthYear, Integer itemId,String isbn, String editor) throws ClassNotFoundException, SQLException {
+            String authorBirthYear, Integer itemId, String isbn, String editor)
+            throws ClassNotFoundException, SQLException {
         BookDb.AddBook(title, firstEditionYear, description);
         BookDb.AddAuthor(author, authorBirthYear);
         BookDb.AddEditor(editor, isbn);
