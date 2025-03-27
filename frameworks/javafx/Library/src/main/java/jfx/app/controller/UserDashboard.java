@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import jfx.app.Launch;
-import jfx.app.model.BookCopy;
+import jfx.app.model.Item;
 import jfx.app.database.BookDb;
 import jfx.app.model.HasBorrowed;
 
@@ -33,11 +33,11 @@ public class UserDashboard {
     public CheckBox checkBoxAvailableBooks;
     public CheckBox CheckBoxBorrowedBooks;
 
-    public TableView<BookCopy> BooksTable;
-    public TableColumn<BookCopy, String> TableBookTitle;
-    public TableColumn<BookCopy, String> TableAuthor;
-    public TableColumn<BookCopy, String> TableEditor;
-    public TableColumn<BookCopy, String> TableBookDescription;
+    public TableView<Item> BooksTable;
+    public TableColumn<Item, String> TableBookTitle;
+    public TableColumn<Item, String> TableAuthor;
+    public TableColumn<Item, String> TableEditor;
+    public TableColumn<Item, String> TableBookDescription;
 
     public TableView<HasBorrowed> LoansTable;
     public TableColumn<HasBorrowed, Integer> LoanTableBookId;
@@ -62,7 +62,7 @@ public class UserDashboard {
         TableBookDescription.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
 
         // books borrowed
-        LoanTableBookId.setCellValueFactory(cellData -> cellData.getValue().BookCopyIdProperty().asObject());
+        LoanTableBookId.setCellValueFactory(cellData -> cellData.getValue().itemIdProperty().asObject());
         LoanTableBookTitle.setCellValueFactory(cellData -> cellData.getValue().bookTitleProperty());
         LoanTableUserEmail.setCellValueFactory(cellData -> cellData.getValue().userEmailProperty());
         LoanTableLastName.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
@@ -100,7 +100,7 @@ public class UserDashboard {
 
             if (BookDb.checkBookExistence(this.BookTitle.getText(), this.BookAuthor.getText(),
                     this.BookEditor.getText())) {
-                ObservableList<BookCopy> bookCopies = FXCollections.observableArrayList();
+                ObservableList<Item> bookCopies = FXCollections.observableArrayList();
                 bookCopies.add(BookDb.searchBook1(this.BookTitle.getText(), this.BookAuthor.getText(),
                         this.BookEditor.getText()));
                 BooksTable.setItems(bookCopies);
@@ -115,7 +115,7 @@ public class UserDashboard {
     public void checkAvailableBooks(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (this.checkBoxAvailableBooks.isSelected()) {
             this.BooksTable.setItems(null);
-            ObservableList<BookCopy> bookCopies = BookDb.searchAvailableBooks2();
+            ObservableList<Item> bookCopies = BookDb.searchAvailableBooks2();
             BooksTable.setItems(bookCopies);
         } else {
             this.BooksTable.setItems(null);

@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class HasBorrowed {
-    private IntegerProperty bookCopyId = new SimpleIntegerProperty();
+    private IntegerProperty itemId = new SimpleIntegerProperty();
     private StringProperty bookTitle = new SimpleStringProperty();
     private StringProperty userLogin = new SimpleStringProperty();
     private StringProperty userEmail = new SimpleStringProperty();
@@ -80,15 +80,15 @@ public class HasBorrowed {
     }
 
     public int getBookCopyId() {
-        return bookCopyId.get();
+        return itemId.get();
     }
 
-    public IntegerProperty bookCopyIdProperty() {
-        return bookCopyId;
+    public IntegerProperty itemIdProperty() {
+        return itemId;
     }
 
-    public void setBookCopyId(int bookCopyId) {
-        this.bookCopyId.set(bookCopyId);
+    public void setBookCopyId(int itemId) {
+        this.itemId.set(itemId);
     }
 
     public String getGiveBackDate() {

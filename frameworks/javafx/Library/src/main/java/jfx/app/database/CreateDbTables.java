@@ -63,16 +63,16 @@ public class CreateDbTables {
                 System.out.println("Table changeCategory successfully!");
 
                 Statement stmt6 = con.createStatement();
-                String sql6 = "CREATE TABLE IF NOT EXISTS  BookCopy (CopyId INT PRIMARY KEY, BookTitle VARCHAR(255), BookFirstYearEdition INT, EditorISBN VARCHAR(255), FOREIGN KEY (EditorISBN) REFERENCES Editor(ISBN), FOREIGN KEY (BookTitle, BookFirstYearEdition) REFERENCES Book (Title, FirstYearEdition));";
+                String sql6 = "CREATE TABLE IF NOT EXISTS  Item (CopyId INT PRIMARY KEY, BookTitle VARCHAR(255), BookFirstYearEdition INT, EditorISBN VARCHAR(255), FOREIGN KEY (EditorISBN) REFERENCES Editor(ISBN), FOREIGN KEY (BookTitle, BookFirstYearEdition) REFERENCES Book (Title, FirstYearEdition));";
                 stmt6.executeUpdate(sql6);
 
-                System.out.println("Table BookCopy successfully!");
+                System.out.println("Table Item successfully!");
 
                 Statement stmt7 = con.createStatement();
-                String sql7 = "CREATE TABLE IF NOT EXISTS  HasBorrowed (BookCopyId INT, BorrowerLogin VARCHAR(30), BorrowingDate Date, LimitDate Date, GiveBackDate Date, FOREIGN KEY (BookCopyId) REFERENCES BookCopy (CopyId), FOREIGN KEY (BorrowerLogin) REFERENCES User (Login))";
+                String sql7 = "CREATE TABLE IF NOT EXISTS  HasBorrowed (BookCopyId INT, BorrowerLogin VARCHAR(30), BorrowingDate Date, LimitDate Date, GiveBackDate Date, FOREIGN KEY (BookCopyId) REFERENCES Item (CopyId), FOREIGN KEY (BorrowerLogin) REFERENCES User (Login))";
                 stmt7.executeUpdate(sql7);
                 // PRIMARY KEY (BookCopyId, BorrowerLogin)
-                System.out.println("Table BookCopy created successfully!");
+                System.out.println("Table Item created successfully!");
             }
             System.out.println("All the Tables have been successfully created...");
 

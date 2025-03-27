@@ -6,7 +6,7 @@ import java.util.Objects;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import jfx.app.model.BookCopy;
+import jfx.app.model.Item;
 import jfx.app.model.HasBorrowed;
 import jfx.app.model.UserCategory;
 
@@ -94,22 +94,22 @@ public class BookDb {
     public static void AddBookCopy(String CopyId, String BookTitle, Integer BookFirstYearEdition, String EditorISBN)
             throws SQLException, ClassNotFoundException {
         DbUtils.dbExecuteUpdate("""
-                INSERT INTO BookCopy (CopyId, BookTitle, BookFirstYearEdition, EditorISBN)
+                INSERT INTO Item (CopyId, BookTitle, BookFirstYearEdition, EditorISBN)
                 VALUES ('""" + CopyId + "','" + BookTitle + "'," + BookFirstYearEdition + ",'" + EditorISBN + "');");
     }
 
     // Search book
-    public static BookCopy searchBook(String bookTitle, String bookAuthor, String bookEditor)
+    public static Item searchBook(String bookTitle, String bookAuthor, String bookEditor)
             throws SQLException, ClassNotFoundException {
         if (!Objects.equals(bookTitle, "")) {
             ResultSet rs = DbUtils.dbExecuteQuery(
                     """
-                            SELECT BookCopy.BookTitle, AuthorName, EditorName, Description, CopyId FROM BookCopy
-                            JOIN Book ON Book.Title = BookCopy.BookTitle AND Book.FirstYearEdition = BookCopy.BookFirstYearEdition
+                            SELECT Item.BookTitle, AuthorName, EditorName, Description, CopyId FROM Item
+                            JOIN Book ON Book.Title = Item.BookTitle AND Book.FirstYearEdition = Item.BookFirstYearEdition
                             JOIN HasWritten ON Book.Title = HasWritten.BookTitle AND Book.FirstYearEdition = HasWritten.BookFirstYearEdition
                             JOIN Author ON Author.Id = HasWritten.AuthorId
-                            JOIN Editor ON Editor.ISBN = BookCopy.EditorISBN
-                            WHERE BookCopy.BookTitle ='"""
+                            JOIN Editor ON Editor.ISBN = Item.EditorISBN
+                            WHERE Item.BookTitle ='"""
                             + bookTitle + "'" + "ORDER BY BookTitle DESC ");
             return Observe0(rs);
         }
@@ -117,11 +117,11 @@ public class BookDb {
         if (!Objects.equals(bookAuthor, "")) {
             ResultSet rs = DbUtils.dbExecuteQuery(
                     """
-                            SELECT BookCopy.BookTitle, AuthorName, EditorName, Description, CopyId FROM BookCopy
-                            JOIN Book ON Book.Title = BookCopy.BookTitle AND Book.FirstYearEdition = BookCopy.BookFirstYearEdition
+                            SELECT Item.BookTitle, AuthorName, EditorName, Description, CopyId FROM Item
+                            JOIN Book ON Book.Title = Item.BookTitle AND Book.FirstYearEdition = Item.BookFirstYearEdition
                             JOIN HasWritten ON Book.Title = HasWritten.BookTitle AND Book.FirstYearEdition = HasWritten.BookFirstYearEdition
                             JOIN Author ON Author.Id = HasWritten.AuthorId
-                            JOIN Editor ON Editor.ISBN = BookCopy.EditorISBN
+                            JOIN Editor ON Editor.ISBN = Item.EditorISBN
                             WHERE Author.AuthorName ='"""
                             + bookAuthor + "'" + "ORDER BY BookTitle DESC ");
             return Observe0(rs);
@@ -130,11 +130,11 @@ public class BookDb {
         if (!Objects.equals(bookEditor, "")) {
             ResultSet rs = DbUtils.dbExecuteQuery(
                     """
-                            SELECT BookCopy.BookTitle, AuthorName, EditorName, Description, CopyId FROM BookCopy
-                            JOIN Book ON Book.Title = BookCopy.BookTitle AND Book.FirstYearEdition = BookCopy.BookFirstYearEdition
+                            SELECT Item.BookTitle, AuthorName, EditorName, Description, CopyId FROM Item
+                            JOIN Book ON Book.Title = Item.BookTitle AND Book.FirstYearEdition = Item.BookFirstYearEdition
                             JOIN HasWritten ON Book.Title = HasWritten.BookTitle AND Book.FirstYearEdition = HasWritten.BookFirstYearEdition
                             JOIN Author ON Author.Id = HasWritten.AuthorId
-                            JOIN Editor ON Editor.ISBN = BookCopy.EditorISBN
+                            JOIN Editor ON Editor.ISBN = Item.EditorISBN
                             WHERE Editor.EditorName ='"""
                             + bookEditor + "'" + "ORDER BY BookTitle DESC ");
             return Observe0(rs);
@@ -142,38 +142,38 @@ public class BookDb {
         return null;
     }
 
-    private static BookCopy Observe0(ResultSet rs) throws SQLException {
-        BookCopy BookCopy = new BookCopy();
+    private static Item Observe0(ResultSet rs) throws SQLException {
+        Item Item = new Item();
         while (rs.next()) {
-            BookCopy.setBookTitle(rs.getString("BookTitle"));
-            BookCopy.setAuthorName(rs.getString("AuthorName"));
-            BookCopy.setEditorName(rs.getString("EditorName"));
-            BookCopy.setDescription(rs.getString("Description"));
-            BookCopy.setCopyId(rs.getInt("CopyId"));
+            Item.setBookTitle(rs.getString("BookTitle"));
+            Item.setAuthorName(rs.getString("AuthorName"));
+            Item.setEditorName(rs.getString("EditorName"));
+            Item.setDescription(rs.getString("Description"));
+            Item.setCopyId(rs.getInt("CopyId"));
 
         }
-        return BookCopy;
+        return Item;
     }
 
     public static boolean checkBookExistence(String bookTitle, String bookAuthor, String bookEditor)
             throws SQLException, ClassNotFoundException {
         ResultSet rs1 = DbUtils.dbExecuteQuery(bookTitle + """
-                SELECT COUNT(1) FROM BookCopy
-                WHERE BookCopy.BookTitle ='""" + "'");
+                SELECT COUNT(1) FROM Item
+                WHERE Item.BookTitle ='""" + "'");
 
         ResultSet rs2 = DbUtils.dbExecuteQuery(
                 """
-                        SELECT COUNT(1) FROM BookCopy
-                        JOIN Book ON Book.Title = BookCopy.BookTitle AND Book.FirstYearEdition = BookCopy.BookFirstYearEdition
+                        SELECT COUNT(1) FROM Item
+                        JOIN Book ON Book.Title = Item.BookTitle AND Book.FirstYearEdition = Item.BookFirstYearEdition
                         JOIN HasWritten ON Book.Title = HasWritten.BookTitle AND Book.FirstYearEdition = HasWritten.BookFirstYearEdition
                         JOIN Author ON Author.Id = HasWritten.AuthorId
                         WHERE Author.AuthorName ='"""
                         + bookAuthor + "'");
 
         ResultSet rs3 = DbUtils.dbExecuteQuery("""
-                SELECT COUNT(1) FROM BookCopy
-                JOIN Book ON Book.Title = BookCopy.BookTitle AND Book.FirstYearEdition = BookCopy.BookFirstYearEdition
-                JOIN Editor ON Editor.ISBN = BookCopy.EditorISBN
+                SELECT COUNT(1) FROM Item
+                JOIN Book ON Book.Title = Item.BookTitle AND Book.FirstYearEdition = Item.BookFirstYearEdition
+                JOIN Editor ON Editor.ISBN = Item.EditorISBN
                 WHERE Editor.EditorName ='""" + bookEditor + "'");
 
         if (rs1.next() && !Objects.equals(bookTitle, "")) {
@@ -192,17 +192,17 @@ public class BookDb {
     }
 
     // Search book
-    public static BookCopy searchBook1(String bookTitle, String bookAuthor, String bookEditor)
+    public static Item searchBook1(String bookTitle, String bookAuthor, String bookEditor)
             throws SQLException, ClassNotFoundException {
         if (!Objects.equals(bookTitle, "")) {
             ResultSet rs = DbUtils.dbExecuteQuery(
                     """
-                            SELECT BookCopy.BookTitle, AuthorName, EditorName, Description FROM BookCopy
-                            JOIN Book ON Book.Title = BookCopy.BookTitle AND Book.FirstYearEdition = BookCopy.BookFirstYearEdition
+                            SELECT Item.BookTitle, AuthorName, EditorName, Description FROM Item
+                            JOIN Book ON Book.Title = Item.BookTitle AND Book.FirstYearEdition = Item.BookFirstYearEdition
                             JOIN HasWritten ON Book.Title = HasWritten.BookTitle AND Book.FirstYearEdition = HasWritten.BookFirstYearEdition
                             JOIN Author ON Author.Id = HasWritten.AuthorId
-                            JOIN Editor ON Editor.ISBN = BookCopy.EditorISBN
-                            WHERE BookCopy.BookTitle ='"""
+                            JOIN Editor ON Editor.ISBN = Item.EditorISBN
+                            WHERE Item.BookTitle ='"""
                             + bookTitle + "'" + "ORDER BY BookTitle DESC ");
             return Observe1(rs);
         }
@@ -210,11 +210,11 @@ public class BookDb {
         if (!Objects.equals(bookAuthor, "")) {
             ResultSet rs = DbUtils.dbExecuteQuery(
                     """
-                            SELECT BookCopy.BookTitle, AuthorName, EditorName, Description FROM BookCopy
-                            JOIN Book ON Book.Title = BookCopy.BookTitle AND Book.FirstYearEdition = BookCopy.BookFirstYearEdition
+                            SELECT Item.BookTitle, AuthorName, EditorName, Description FROM Item
+                            JOIN Book ON Book.Title = Item.BookTitle AND Book.FirstYearEdition = Item.BookFirstYearEdition
                             JOIN HasWritten ON Book.Title = HasWritten.BookTitle AND Book.FirstYearEdition = HasWritten.BookFirstYearEdition
                             JOIN Author ON Author.Id = HasWritten.AuthorId
-                            JOIN Editor ON Editor.ISBN = BookCopy.EditorISBN
+                            JOIN Editor ON Editor.ISBN = Item.EditorISBN
                             WHERE Author.AuthorName ='"""
                             + bookAuthor + "'" + "ORDER BY BookTitle DESC ");
             return Observe1(rs);
@@ -223,11 +223,11 @@ public class BookDb {
         if (!Objects.equals(bookEditor, "")) {
             ResultSet rs = DbUtils.dbExecuteQuery(
                     """
-                            SELECT BookCopy.BookTitle, AuthorName, EditorName, Description FROM BookCopy
-                            JOIN Book ON Book.Title = BookCopy.BookTitle AND Book.FirstYearEdition = BookCopy.BookFirstYearEdition
+                            SELECT Item.BookTitle, AuthorName, EditorName, Description FROM Item
+                            JOIN Book ON Book.Title = Item.BookTitle AND Book.FirstYearEdition = Item.BookFirstYearEdition
                             JOIN HasWritten ON Book.Title = HasWritten.BookTitle AND Book.FirstYearEdition = HasWritten.BookFirstYearEdition
                             JOIN Author ON Author.Id = HasWritten.AuthorId
-                            JOIN Editor ON Editor.ISBN = BookCopy.EditorISBN
+                            JOIN Editor ON Editor.ISBN = Item.EditorISBN
                             WHERE Editor.EditorName ='"""
                             + bookEditor + "'" + "ORDER BY BookTitle DESC ");
             return Observe1(rs);
@@ -235,72 +235,72 @@ public class BookDb {
         return null;
     }
 
-    private static BookCopy Observe1(ResultSet rs) throws SQLException {
-        BookCopy BookCopy = new BookCopy();
+    private static Item Observe1(ResultSet rs) throws SQLException {
+        Item Item = new Item();
         while (rs.next()) {
-            BookCopy.setBookTitle(rs.getString("BookTitle"));
-            BookCopy.setAuthorName(rs.getString("AuthorName"));
-            BookCopy.setEditorName(rs.getString("EditorName"));
-            BookCopy.setDescription(rs.getString("Description"));
+            Item.setBookTitle(rs.getString("BookTitle"));
+            Item.setAuthorName(rs.getString("AuthorName"));
+            Item.setEditorName(rs.getString("EditorName"));
+            Item.setDescription(rs.getString("Description"));
 
         }
-        return BookCopy;
+        return Item;
     }
 
     // Check available book
-    public static ObservableList<BookCopy> searchAvailableBooks() throws SQLException, ClassNotFoundException {
+    public static ObservableList<Item> searchAvailableBooks() throws SQLException, ClassNotFoundException {
         ResultSet rs = DbUtils.dbExecuteQuery(
                 """
-                        SELECT BookCopy.BookTitle, AuthorName, EditorName, Description, CopyId FROM BookCopy
-                        JOIN Book ON Book.Title = BookCopy.BookTitle AND Book.FirstYearEdition = BookCopy.BookFirstYearEdition
+                        SELECT Item.BookTitle, AuthorName, EditorName, Description, CopyId FROM Item
+                        JOIN Book ON Book.Title = Item.BookTitle AND Book.FirstYearEdition = Item.BookFirstYearEdition
                         JOIN HasWritten ON Book.Title = HasWritten.BookTitle AND Book.FirstYearEdition = HasWritten.BookFirstYearEdition
                         JOIN Author ON Author.Id = HasWritten.AuthorId
-                        JOIN Editor ON Editor.ISBN = BookCopy.EditorISBN
+                        JOIN Editor ON Editor.ISBN = Item.EditorISBN
                         ORDER BY BookTitle DESC
                         """);
         return getAvailableBooks(rs);
     }
 
-    private static ObservableList<BookCopy> getAvailableBooks(ResultSet rs) throws SQLException {
-        ObservableList<BookCopy> bookCopies;
+    private static ObservableList<Item> getAvailableBooks(ResultSet rs) throws SQLException {
+        ObservableList<Item> bookCopies;
         bookCopies = FXCollections.observableArrayList();
 
         while (rs.next()) {
-            BookCopy BookCopy = new BookCopy();
-            BookCopy.setBookTitle(rs.getString("BookTitle"));
-            BookCopy.setAuthorName(rs.getString("AuthorName"));
-            BookCopy.setEditorName(rs.getString("EditorName"));
-            BookCopy.setDescription(rs.getString("Description"));
-            BookCopy.setCopyId(rs.getInt("CopyId"));
-            bookCopies.add(BookCopy);
+            Item Item = new Item();
+            Item.setBookTitle(rs.getString("BookTitle"));
+            Item.setAuthorName(rs.getString("AuthorName"));
+            Item.setEditorName(rs.getString("EditorName"));
+            Item.setDescription(rs.getString("Description"));
+            Item.setCopyId(rs.getInt("CopyId"));
+            bookCopies.add(Item);
         }
         return bookCopies;
     }
 
-    public static ObservableList<BookCopy> searchAvailableBooks2() throws SQLException, ClassNotFoundException {
+    public static ObservableList<Item> searchAvailableBooks2() throws SQLException, ClassNotFoundException {
         ResultSet rs = DbUtils.dbExecuteQuery(
                 """
-                        SELECT DISTINCT BookCopy.BookTitle, AuthorName, EditorName, Description FROM BookCopy
-                        JOIN Book ON Book.Title = BookCopy.BookTitle AND Book.FirstYearEdition = BookCopy.BookFirstYearEdition
+                        SELECT DISTINCT Item.BookTitle, AuthorName, EditorName, Description FROM Item
+                        JOIN Book ON Book.Title = Item.BookTitle AND Book.FirstYearEdition = Item.BookFirstYearEdition
                         JOIN HasWritten ON Book.Title = HasWritten.BookTitle AND Book.FirstYearEdition = HasWritten.BookFirstYearEdition
                         JOIN Author ON Author.Id = HasWritten.AuthorId
-                        JOIN Editor ON Editor.ISBN = BookCopy.EditorISBN
+                        JOIN Editor ON Editor.ISBN = Item.EditorISBN
                         ORDER BY BookTitle DESC
                         """);
         return getAvailableBooks2(rs);
     }
 
-    private static ObservableList<BookCopy> getAvailableBooks2(ResultSet rs) throws SQLException {
-        ObservableList<BookCopy> bookCopies;
+    private static ObservableList<Item> getAvailableBooks2(ResultSet rs) throws SQLException {
+        ObservableList<Item> bookCopies;
         bookCopies = FXCollections.observableArrayList();
 
         while (rs.next()) {
-            BookCopy BookCopy = new BookCopy();
-            BookCopy.setBookTitle(rs.getString("BookTitle"));
-            BookCopy.setAuthorName(rs.getString("AuthorName"));
-            BookCopy.setEditorName(rs.getString("EditorName"));
-            BookCopy.setDescription(rs.getString("Description"));
-            bookCopies.add(BookCopy);
+            Item Item = new Item();
+            Item.setBookTitle(rs.getString("BookTitle"));
+            Item.setAuthorName(rs.getString("AuthorName"));
+            Item.setEditorName(rs.getString("EditorName"));
+            Item.setDescription(rs.getString("Description"));
+            bookCopies.add(Item);
         }
         return bookCopies;
     }
@@ -310,7 +310,7 @@ public class BookDb {
         ResultSet rs = DbUtils.dbExecuteQuery("""
                 SELECT * FROM User
                 JOIN HasBorrowed ON User.Login = HasBorrowed.BorrowerLogin
-                JOIN BookCopy ON BookCopy.CopyID = HasBorrowed.BookCopyId
+                JOIN Item ON Item.CopyID = HasBorrowed.BookCopyId
                 WHERE HasBorrowed.GiveBackDate IS NULL""");
         return Observe2(rs);
     }
@@ -320,7 +320,7 @@ public class BookDb {
         ResultSet rs = DbUtils.dbExecuteQuery("""
                 SELECT * FROM User
                 JOIN HasBorrowed ON User.Login = HasBorrowed.BorrowerLogin
-                JOIN BookCopy ON BookCopy.CopyID = HasBorrowed.BookCopyId
+                JOIN Item ON Item.CopyID = HasBorrowed.BookCopyId
                 WHERE HasBorrowed.BorrowerLogin = '""" + myLogin + "'");
         return Observe2(rs);
     }
@@ -345,7 +345,7 @@ public class BookDb {
     }
 
     public static boolean checkBookCopyExistence(Integer CopyId) throws SQLException, ClassNotFoundException {
-        ResultSet rs = DbUtils.dbExecuteQuery(" SELECT COUNT(CopyId) FROM BookCopy WHERE CopyId = '" + CopyId + "'");
+        ResultSet rs = DbUtils.dbExecuteQuery(" SELECT COUNT(CopyId) FROM Item WHERE CopyId = '" + CopyId + "'");
         if (rs.next()) {
             int nb = rs.getInt(1);
             return !(nb == 0);

@@ -5,14 +5,14 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class BookCopy extends Book {
+public class Item extends Book {
 
     private IntegerProperty copyId = new SimpleIntegerProperty();
     private StringProperty editorName = new SimpleStringProperty();
 
     private User borrower = new User();
 
-    public BookCopy() {
+    public Item() {
 
     }
 
