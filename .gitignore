@@ -26,3 +26,6 @@ replay_pid*
 # Visual Studio Code
 .vscode/*
 !.vscode/settings.json
+
+# Else
+presentation

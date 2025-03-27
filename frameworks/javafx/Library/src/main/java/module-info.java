@@ -3,7 +3,6 @@ module com {
     requires transitive javafx.controls;
     requires transitive javafx.graphics;
     requires javafx.fxml;
-    // requires com.jfoenix;
    
 
     requires transitive java.sql;

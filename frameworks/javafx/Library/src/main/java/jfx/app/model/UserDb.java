@@ -14,8 +14,8 @@ import javafx.collections.ObservableList;
 public class UserDb {
     public static void AddUser(String login, String lastName, String firstName, String emailAddress, String password,
             String category) throws SQLException, ClassNotFoundException, NoSuchAlgorithmException {
-        Integer maxBooks = new Category().getMaxBooks(category);
-        Integer maxDays = new Category().getMaxDays(category);
+        Integer maxBooks = new UserCategory().getMaxBooks(category);
+        Integer maxDays = new UserCategory().getMaxDays(category);
         DbUtils.dbExecuteUpdate("""
                 INSERT INTO User (Login, LastName, FirstName, EmailAddress, HashedPassword, Category, maxBooks, maxDays)
                 VALUES ('""" + login + "','" + lastName + "','" + firstName + "','" + emailAddress + "','"
@@ -24,8 +24,8 @@ public class UserDb {
 
     public static void updateCategory(String userLogin, String managerLogin, String category)
             throws SQLException, ClassNotFoundException {
-        Integer maxBooks = new Category().getMaxBooks(category);
-        Integer maxDays = new Category().getMaxDays(category);
+        Integer maxBooks = new UserCategory().getMaxBooks(category);
+        Integer maxDays = new UserCategory().getMaxDays(category);
         DbUtils.dbExecuteUpdate("""
                 UPDATE User
                 SET Category ='""" + category + "', maxBooks = " + maxBooks + ", maxDays = " + maxDays + "\n" +

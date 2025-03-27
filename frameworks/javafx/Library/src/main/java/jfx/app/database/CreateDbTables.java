@@ -1,4 +1,4 @@
-package jfx.app.model;
+package jfx.app.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

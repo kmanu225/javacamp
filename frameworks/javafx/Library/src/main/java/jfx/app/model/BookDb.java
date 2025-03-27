@@ -371,8 +371,8 @@ public class BookDb {
             category = rs2.getString(1);
         }
 
-        Integer maxBooks = new Category().getMaxBooks(category);
-        Integer maxDays = new Category().getMaxDays(category);
+        Integer maxBooks = new UserCategory().getMaxBooks(category);
+        Integer maxDays = new UserCategory().getMaxDays(category);
 
         int EverBorrowed = 0;
 

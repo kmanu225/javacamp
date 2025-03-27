@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Category {
+public class UserCategory {
 
     private static Map<String, ArrayList<Integer>> userCapacities = new HashMap<>();
 
@@ -22,7 +22,7 @@ public class Category {
      * - maxBooks : The maximum number of books a user can borrow.
      * - maxDays : The maximum number of days a user can keep a borrowed book.
      */
-    public Category() {
+    public UserCategory() {
         userCapacities.put("M", new ArrayList<>(Arrays.asList(6, 10)));
         userCapacities.put("S", new ArrayList<>(Arrays.asList(0, 0)));
         userCapacities.put("A", new ArrayList<>(Arrays.asList(4, 7)));

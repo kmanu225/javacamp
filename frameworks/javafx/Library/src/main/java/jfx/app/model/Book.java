@@ -8,7 +8,6 @@ public class Book {
     private StringProperty bookTitle = new SimpleStringProperty();
     private StringProperty authorName = new SimpleStringProperty();
     private StringProperty description = new SimpleStringProperty();
-    // private ListProperty<String> authors;
 
     public Book() {
 
